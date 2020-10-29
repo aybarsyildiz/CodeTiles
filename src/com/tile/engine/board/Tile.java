@@ -2,7 +2,6 @@ package com.tile.engine.board;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import com.tile.engine.players.Player;
 
 public abstract class Tile {
@@ -38,7 +37,7 @@ public abstract class Tile {
 
     public static final class EmptyTile extends Tile{
         //altın olmayan boş kare sınıfı
-        EmptyTile(final int coordiante){
+        private EmptyTile(final int coordiante){
             super(coordiante);
         }
 
@@ -58,7 +57,7 @@ public abstract class Tile {
         
         //altın olan kare sınıfı
 
-        AltinTile(int tileCoordinate){
+        private AltinTile(int tileCoordinate){
             super(tileCoordinate);
             
         }
