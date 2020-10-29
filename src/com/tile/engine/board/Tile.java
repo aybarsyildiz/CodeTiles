@@ -1,5 +1,10 @@
+package com.tile.engine.board;
+
+import com.tile.engine.players.Player;
+
 public abstract class Tile {
-    int tileCoordinate;
+
+    protected final int tileCoordinate;
 
     Tile(int tileCoordinate){
         this.tileCoordinate = tileCoordinate;
@@ -11,7 +16,7 @@ public abstract class Tile {
 
     public static final class EmptyTile extends Tile{
 
-        EmptyTile(int coordiante){
+        EmptyTile(final int coordiante){
             super(coordiante);
         }
 
@@ -28,6 +33,8 @@ public abstract class Tile {
 
     }
     public static final class AltinTile extends Tile{
+        
+        
 
         AltinTile(int tileCoordinate){
             super(tileCoordinate);
