@@ -1,6 +1,6 @@
-## Getting Started
+## CodeTiles
 
-Welcome to the Java world.
+Welcome to the CodeTiles documentation
 
 ## Folder Structure
 
