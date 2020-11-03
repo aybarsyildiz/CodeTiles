@@ -1,27 +1,39 @@
 package com.tile.engine.board;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+
 import com.tile.engine.players.Player;
 
 public abstract class Tile {
-
+    static Random rand = new Random();
     protected final int tileCoordinate;
 
     private static final Map<Integer, EmptyTile> EMPTY_TILES = createAllPossibleEmptyTiles();
-    //hash-map kullanarak board oluşturulması
-    private static Map<Integer, EmptyTile> createAllPossibleEmptyTiles(){
+
+    // hash-map kullanarak board oluşturulması
+    private static Map<Integer, EmptyTile> createAllPossibleEmptyTiles() {
 
         final Map<Integer, EmptyTile> emptyTileMap = new HashMap<>();
 
-        for(int i = 0; i<400; i++){
-            emptyTileMap.put(i,new EmptyTile(i));
+        for (int i = 0; i < 400; i++) {
+            emptyTileMap.put(i, new EmptyTile(i));
         }
 
         return emptyTileMap;
     }
 
-    public static Tile createTile(final int tileCoordinate, final Player player){
+    public static Tile createTile(final int tileCoordinate, final Player player, int altinOlanKareSayisi) {
+
+        ArrayList<Integer> altinOlanKareler = new ArrayList<>();
+
+        for (int i = 0; i < altinOlanKareSayisi; i++) {
+            altinOlanKareler.add(rand.nextInt(400));
+        }
+
+        
 
         return player != null ? new AltinTile(tileCoordinate) : EMPTY_TILES.get(tileCoordinate);
         //eğer oyuncu o karede değilse altın karesi oluşturma methodu
