@@ -10,34 +10,38 @@ import com.tile.engine.players.Player;
 public abstract class Tile {
     static Random rand = new Random();
     protected final int tileCoordinate;
-
-    private static final Map<Integer, EmptyTile> EMPTY_TILES = createAllPossibleEmptyTiles();
+    
+    private static final Map<Integer, Integer> ALL_TILES = createAllPossibleTiles();
 
     // hash-map kullanarak board oluşturulması
-    private static Map<Integer, EmptyTile> createAllPossibleEmptyTiles() {
+    private static Map<Integer, Integer> createAllPossibleTiles() {
 
-        final Map<Integer, EmptyTile> emptyTileMap = new HashMap<>();
-
-        for (int i = 0; i < 400; i++) {
-            emptyTileMap.put(i, new EmptyTile(i));
-        }
-
-        return emptyTileMap;
-    }
-
-    public static Tile createTile(final int tileCoordinate, final Player player, int altinOlanKareSayisi) {
+        final Map<Integer, Integer> allTileMap = new HashMap<>();
 
         ArrayList<Integer> altinOlanKareler = new ArrayList<>();
+        int altinDegerleri[] = {5,10,15,20};
 
-        for (int i = 0; i < altinOlanKareSayisi; i++) {
+        for (int i = 0; i < 30; i++) {
             altinOlanKareler.add(rand.nextInt(400));
         }
 
+        for (int i = 0; i < 400; i++) {
+            for(int j = 0; j< altinOlanKareler.size(); j++){
+
+                if(i == altinOlanKareler.get(j)){
+                    allTileMap.put(i,altinDegerleri[rand.nextInt(4)]);
+                }
+                else{
+                    allTileMap.put(i,0);
+                }
+            }
+        }
         
 
-        return player != null ? new AltinTile(tileCoordinate) : EMPTY_TILES.get(tileCoordinate);
-        //eğer oyuncu o karede değilse altın karesi oluşturma methodu
+        return allTileMap;
     }
+
+   
 
     private Tile(int tileCoordinate){
         this.tileCoordinate = tileCoordinate;
