@@ -1,17 +1,13 @@
-## CodeTiles
+# CodeTiles
 
-Welcome to the CodeTiles documentation
+CodeTiles Dokümantasyonu
 
-## Folder Structure
+## Dosyayolu yapısı
 
-The workspace contains two folders by default, where:
+2 dosya yolu var.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-### Dependency Management
-
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+- `src`: kodların ve yapının oluşturulduğu dosya yolu.
+- `lib`: kullanılacak ve ihtiyacımız olan dosyaları koyacağımız yer.
 
 # Idea
 
