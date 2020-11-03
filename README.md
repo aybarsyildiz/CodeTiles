@@ -16,9 +16,9 @@ The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More detail
 # Idea
 
 ## Tile'lar
-0 dan 399 a kadar tüm tile ların idleri olsun
-bu idlere rastgele olarak altın ve gizli altın yerleştirelim.
-görünür altınlar 5,10,15,20 gibi değerler alırken gizli olanları belirlemek için -5,-10,-15,-20 gibi değerleri kullanalım. uygulamaya dökerken daha kolay olur implement etmesi.
+-0 dan 399 a kadar tüm tile ların idleri olsun
+-bu idlere rastgele olarak altın ve gizli altın yerleştirelim.
+-görünür altınlar 5,10,15,20 gibi değerler alırken gizli olanları belirlemek için -5,-10,-15,-20 gibi değerleri kullanalım. uygulamaya dökerken daha kolay olur implement etmesi.
 
 
 ## Projedeki Hashmap kullanımı
