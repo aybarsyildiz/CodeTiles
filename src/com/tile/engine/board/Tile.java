@@ -19,8 +19,11 @@ public abstract class Tile {
         final Map<Integer, Integer> allTileMap = new HashMap<>();
 
         ArrayList<Integer> altinOlanKareler = new ArrayList<>();
+        ArrayList<Integer> gizliAltinOlanKareler = new ArrayList<>();
         int altinDegerleri[] = {5,10,15,20,-5,-10,-15,-20};
+        
 
+        //görünür altın olan karelerin oluşturulması
         for (int i = 0; i < 80; i++) {
             int value = rand.nextInt(400);
             
@@ -31,16 +34,39 @@ public abstract class Tile {
             altinOlanKareler.add(value);
             
         }
+        // gizli altın olan karelerin oluşturulması
+        for (int i = 0; i < 40; i++) {
+            int value = rand.nextInt(400);
+            
+            while(altinOlanKareler.contains(value)){
+                value = rand.nextInt(400);
+            }
+            
+            gizliAltinOlanKareler.add(value);
 
+        }
+        //altın olan ve gizli altın olan karelerin yerleştirilmesi
         for (int i = 0; i < 400; i++) {
             for(int j = 0; j< altinOlanKareler.size(); j++){
 
                 if(i == altinOlanKareler.get(j)){
-                    allTileMap.put(i,altinDegerleri[rand.nextInt(8)]);
+                    allTileMap.put(i,altinDegerleri[rand.nextInt(4)]);
                 }
                 else{
                     allTileMap.put(i,0);
                 }
+            }
+            for(int k = 0; k<gizliAltinOlanKareler.size(); k++){
+                if(i == gizliAltinOlanKareler.get(k)){
+                    //if(allTileMap
+                    //allTileMap.put(i,altinDegerleri[rand.nextInt(4)+4]);
+                    
+                }
+                else{
+
+                }
+                
+
             }
         }
         
