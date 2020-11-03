@@ -21,8 +21,15 @@ public abstract class Tile {
         ArrayList<Integer> altinOlanKareler = new ArrayList<>();
         int altinDegerleri[] = {5,10,15,20,-5,-10,-15,-20};
 
-        for (int i = 0; i < 30; i++) {
-            altinOlanKareler.add(rand.nextInt(400));
+        for (int i = 0; i < 80; i++) {
+            int value = rand.nextInt(400);
+            
+            while(altinOlanKareler.contains(value)){
+                value = rand.nextInt(400);
+            }
+            
+            altinOlanKareler.add(value);
+            
         }
 
         for (int i = 0; i < 400; i++) {
