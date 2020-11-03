@@ -19,7 +19,7 @@ public abstract class Tile {
         final Map<Integer, Integer> allTileMap = new HashMap<>();
 
         ArrayList<Integer> altinOlanKareler = new ArrayList<>();
-        int altinDegerleri[] = {5,10,15,20};
+        int altinDegerleri[] = {5,10,15,20,-5,-10,-15,-20};
 
         for (int i = 0; i < 30; i++) {
             altinOlanKareler.add(rand.nextInt(400));
@@ -29,7 +29,7 @@ public abstract class Tile {
             for(int j = 0; j< altinOlanKareler.size(); j++){
 
                 if(i == altinOlanKareler.get(j)){
-                    allTileMap.put(i,altinDegerleri[rand.nextInt(4)]);
+                    allTileMap.put(i,altinDegerleri[rand.nextInt(8)]);
                 }
                 else{
                     allTileMap.put(i,0);
@@ -47,7 +47,7 @@ public abstract class Tile {
         this.tileCoordinate = tileCoordinate;
     }
 
-    public abstract boolean altinVarMi();
+    
 
     public abstract Player getPlayer();
 
@@ -57,10 +57,7 @@ public abstract class Tile {
             super(coordiante);
         }
 
-        @Override
-        public boolean altinVarMi(){
-            return false;
-        }
+        
 
         @Override
         public Player getPlayer() {
@@ -77,10 +74,7 @@ public abstract class Tile {
             super(tileCoordinate);
             
         }
-        @Override
-        public boolean altinVarMi(){
-            return true;
-        }
+        
 
         @Override
         public Player getPlayer() {
