@@ -10,43 +10,46 @@ import com.tile.engine.players.Player;
 public abstract class Tile {
     static Random rand = new Random();
     protected final int tileCoordinate;
+    static int sayi = 20;
+    //burdaki sayi değeri değişebilecek. default olarak tahta 20x20 o yüzden onu ekledik.
+    private static final Map<Integer, Integer> ALL_TILES = createAllPossibleTiles(sayi);
     
-    private static final Map<Integer, Integer> ALL_TILES = createAllPossibleTiles();
-
     // hash-map kullanarak board oluşturulması
-    private static Map<Integer, Integer> createAllPossibleTiles() {
+    private static Map<Integer, Integer> createAllPossibleTiles(int sayi) {
 
         final Map<Integer, Integer> allTileMap = new HashMap<>();
 
         ArrayList<Integer> altinOlanKareler = new ArrayList<>();
         ArrayList<Integer> gizliAltinOlanKareler = new ArrayList<>();
         int altinDegerleri[] = {5,10,15,20,-5,-10,-15,-20};
-        
+        int toplamKareSayisi = sayi * sayi;
+        int altinOlanKareSayisi = (toplamKareSayisi*20)/100;
+        int gizliAltinOlanKareSayisi = (toplamKareSayisi*10)/100;
 
         //görünür altın olan karelerin oluşturulması
-        for (int i = 0; i < 80; i++) {
-            int value = rand.nextInt(400);
+        for (int i = 0; i < altinOlanKareSayisi; i++) {
+            int value = rand.nextInt(toplamKareSayisi);
             
             while(altinOlanKareler.contains(value)){
-                value = rand.nextInt(400);
+                value = rand.nextInt(toplamKareSayisi);
             }
             
             altinOlanKareler.add(value);
             
         }
         // gizli altın olan karelerin oluşturulması
-        for (int i = 0; i < 40; i++) {
-            int value = rand.nextInt(400);
+        for (int i = 0; i < gizliAltinOlanKareSayisi; i++) {
+            int value = rand.nextInt(toplamKareSayisi);
             
             while(altinOlanKareler.contains(value)){
-                value = rand.nextInt(400);
+                value = rand.nextInt(toplamKareSayisi);
             }
             
             gizliAltinOlanKareler.add(value);
 
         }
         //altın olan ve gizli altın olan karelerin yerleştirilmesi
-        for (int i = 0; i < 400; i++) {
+        for (int i = 0; i < toplamKareSayisi; i++) {
             for(int j = 0; j< altinOlanKareler.size(); j++){
 
                 if(i == altinOlanKareler.get(j)){
@@ -73,6 +76,8 @@ public abstract class Tile {
 
         return allTileMap;
     }
+
+
 
    
 
