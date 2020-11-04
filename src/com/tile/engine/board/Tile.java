@@ -17,7 +17,7 @@ public abstract class Tile {
     // hash-map kullanarak board oluşturulması
     private static Map<Integer, Integer> createAllPossibleTiles(int sayi) {
 
-        final Map<Integer, Integer> allTileMap = new HashMap<>();
+        final Map<Integer, Integer> allTileMap = new HashMap<>();//ızgara
 
         ArrayList<Integer> altinOlanKareler = new ArrayList<>();
         ArrayList<Integer> gizliAltinOlanKareler = new ArrayList<>();
