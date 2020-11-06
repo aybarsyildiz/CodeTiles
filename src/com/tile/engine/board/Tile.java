@@ -10,15 +10,17 @@ import com.tile.engine.players.Player;
 public abstract class Tile {
     static Random rand = new Random();
     
-    static int sayi = 20;
+    public static int sayi = 20;
     //burdaki sayi değeri değişebilecek. default olarak tahta 20x20 o yüzden onu ekledik.
-
+    Tile(){
+        this.sayi = sayi;
+    }
 
     //private static final Map<Integer, Integer> ALL_TILES = createAllPossibleTiles(sayi);
-    private static final int[][] TILES_ALL = createAllPossibleTiles(sayi);
+    public static final int[][] TILES_ALL = createAllPossibleTiles(sayi);
     
     // hash-map kullanarak board oluşturulması
-    private static int[][] createAllPossibleTiles(int sayi) {
+    public static int[][] createAllPossibleTiles(int sayi) {
 
         //final Map<Integer, Integer> allTileMap = new HashMap<>();
         final int[][] tileMapAll = new int[sayi][sayi];
