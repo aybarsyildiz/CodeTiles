@@ -9,19 +9,23 @@ import com.tile.engine.players.Player;
 
 public abstract class Tile {
     static Random rand = new Random();
-    protected final int tileCoordinate;
+    
     static int sayi = 20;
     //burdaki sayi değeri değişebilecek. default olarak tahta 20x20 o yüzden onu ekledik.
-    private static final Map<Integer, Integer> ALL_TILES = createAllPossibleTiles(sayi);
+
+
+    //private static final Map<Integer, Integer> ALL_TILES = createAllPossibleTiles(sayi);
+    private static final int[][] TILES_ALL = createAllPossibleTiles(sayi);
     
     // hash-map kullanarak board oluşturulması
-    private static Map<Integer, Integer> createAllPossibleTiles(int sayi) {
+    private static int[][] createAllPossibleTiles(int sayi) {
 
-        final Map<Integer, Integer> allTileMap = new HashMap<>();//ızgara
+        //final Map<Integer, Integer> allTileMap = new HashMap<>();
+        final int[][] tileMapAll = new int[sayi][sayi];
 
         ArrayList<Integer> altinOlanKareler = new ArrayList<>();
         ArrayList<Integer> gizliAltinOlanKareler = new ArrayList<>();
-        int altinDegerleri[] = {5,10,15,20,-5,-10,-15,-20};
+        int[] altinDegerleri = { 5, 10, 15, 20, -5, -10, -15, -20 };
         int toplamKareSayisi = sayi * sayi;
         int altinOlanKareSayisi = (toplamKareSayisi*20)/100;
         int gizliAltinOlanKareSayisi = (toplamKareSayisi*10)/100;
@@ -51,76 +55,36 @@ public abstract class Tile {
 
         //altın olan ve gizli altın olan karelerin yerleştirilmesi
         for (int i = 0; i < toplamKareSayisi; i++) {
-            boolean altinVarMiYokMu = false;
+            
             for(int j = 0; j< altinOlanKareler.size(); j++){
 
                 if(i == altinOlanKareler.get(j)){
-                    allTileMap.put(i,altinDegerleri[rand.nextInt(4)]);
-                    altinVarMiYokMu = true;
+                    //allTileMap.put(i,altinDegerleri[rand.nextInt(4)]);
+                    tileMapAll[altinOlanKareler.get(j)%sayi][altinOlanKareler.get(j)/sayi] = altinDegerleri[rand.nextInt(4)];
+                    
                 }
                 
             }
             for(int k = 0; k<gizliAltinOlanKareler.size(); k++){
                 if(i == gizliAltinOlanKareler.get(k)){
-                
-                    allTileMap.put(i,altinDegerleri[rand.nextInt(4)+4]);
-                    altinVarMiYokMu = true;
+
+                    tileMapAll[gizliAltinOlanKareler.get(k)%sayi][gizliAltinOlanKareler.get(k)/sayi] = altinDegerleri[rand.nextInt(4)+4];
+                    //allTileMap.put(i,altinDegerleri[rand.nextInt(4)+4]);
+                    
                 }
                 
             }
-            //altın yoksa boş tile
-            if(!altinVarMiYokMu){
-                allTileMap.put(i,0);
-            }
+            
+            
 
         }
         
-        return allTileMap;
+        return tileMapAll;
     }
 
 
 
    
 
-    private Tile(int tileCoordinate){
-        this.tileCoordinate = tileCoordinate;
-    }
-
     
-
-    public abstract Player getPlayer();
-
-    public static final class EmptyTile extends Tile{
-        //altın olmayan boş kare sınıfı
-        private EmptyTile(final int coordiante){
-            super(coordiante);
-        }
-
-        
-
-        @Override
-        public Player getPlayer() {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-    }
-    public static final class AltinTile extends Tile{
-        
-        //altın olan kare sınıfı
-
-        private AltinTile(int tileCoordinate){
-            super(tileCoordinate);
-            
-        }
-        
-
-        @Override
-        public Player getPlayer() {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-
-    }
 }
