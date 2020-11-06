@@ -5,6 +5,16 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         Tile tileCreated;
+        int[] aCoordinat = {0,0};
+        //Oyuncuların hareket etmeleri vs bu şekilde olacak.
+        Player aOyuncusu = new Player(aCoordinat);
+        int[] aOyuncusununKoordinatlari = aOyuncusu.playerPosition;
+        System.out.println("A oyuncusunun sahip olduğu konum: "+aOyuncusu.playerPosition[0]+" "+aOyuncusu.playerPosition[1]);
+        aOyuncusununKoordinatlari[0] += 1;
+        aOyuncusu.koordinatlariGuncelle(aOyuncusununKoordinatlari);
+        System.out.println("A oyuncusunun bir sağ birime hareket ettiğindeki konumu: "+aOyuncusu.playerPosition[0]+" "+aOyuncusu.playerPosition[1]);
+        
+        
         Scanner scn = new Scanner(System.in);
         int tileSayisi = scn.nextInt();
         int[][] oyunAlani = new int[tileSayisi][tileSayisi];
@@ -18,6 +28,7 @@ public class App {
             }
             System.out.print("\n");
         }
+        
         
         
         

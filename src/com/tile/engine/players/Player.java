@@ -4,19 +4,28 @@ import com.tile.engine.board.Move;
 import java.util.List;
 
 
-public abstract class Player {
+public class Player {
 
     
-    int playerPosition;
+    public int[] playerPosition = new int[2];
     
 
-    Player( int playerPosition){
+    public Player( int[] playerPosition){
 
             this.playerPosition = playerPosition;
             
 
     }
+    public int[] suAnkiKoordinat(){
+
+        return this.playerPosition;
+    }
+
+    public int[] koordinatlariGuncelle (int[] yeniKoordinat){
+        this.playerPosition = yeniKoordinat;
+        return playerPosition;
+    }
 
     
-    public abstract List<Move> calculateLegalMoves(final Board board);//pyuncunun yapabileceği hamlelerin listesi
+    //public abstract List<Move> calculateLegalMoves(final Board board);//pyuncunun yapabileceği hamlelerin listesi
 }
