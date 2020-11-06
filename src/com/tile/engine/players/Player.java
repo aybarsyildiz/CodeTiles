@@ -2,18 +2,18 @@ package com.tile.engine.players;
 import com.tile.engine.board.Board;
 import com.tile.engine.board.Move;
 import java.util.List;
-import com.tile.engine.PlayerClass;
+
 
 public abstract class Player {
 
     
-    protected final int playerPosition;
-    protected final PlayerClass playerClass;
+    int playerPosition;
+    
 
-    Player(final int playerPosition, final PlayerClass playerClass){
+    Player( int playerPosition){
 
             this.playerPosition = playerPosition;
-            this.playerClass = playerClass;
+            
 
     }
 
