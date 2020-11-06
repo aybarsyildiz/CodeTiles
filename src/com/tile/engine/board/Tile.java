@@ -40,40 +40,41 @@ public abstract class Tile {
         // gizli altın olan karelerin oluşturulması
         for (int i = 0; i < gizliAltinOlanKareSayisi; i++) {
             int value = rand.nextInt(toplamKareSayisi);
-            
-            while(altinOlanKareler.contains(value)){
+            //eğer o karede zaten altın veya gizli altın varsa gizli altın koymaz
+            while(altinOlanKareler.contains(value) || gizliAltinOlanKareler.contains(value)){
                 value = rand.nextInt(toplamKareSayisi);
             }
             
             gizliAltinOlanKareler.add(value);
 
         }
+
         //altın olan ve gizli altın olan karelerin yerleştirilmesi
         for (int i = 0; i < toplamKareSayisi; i++) {
+            boolean altinVarMiYokMu = false;
             for(int j = 0; j< altinOlanKareler.size(); j++){
 
                 if(i == altinOlanKareler.get(j)){
                     allTileMap.put(i,altinDegerleri[rand.nextInt(4)]);
+                    altinVarMiYokMu = true;
                 }
-                else{
-                    allTileMap.put(i,0);
-                }
+                
             }
             for(int k = 0; k<gizliAltinOlanKareler.size(); k++){
                 if(i == gizliAltinOlanKareler.get(k)){
-                    //if(allTileMap
-                    //allTileMap.put(i,altinDegerleri[rand.nextInt(4)+4]);
-                    
-                }
-                else{
-
+                
+                    allTileMap.put(i,altinDegerleri[rand.nextInt(4)+4]);
+                    altinVarMiYokMu = true;
                 }
                 
-
             }
+            //altın yoksa boş tile
+            if(!altinVarMiYokMu){
+                allTileMap.put(i,0);
+            }
+
         }
         
-
         return allTileMap;
     }
 
