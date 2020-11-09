@@ -84,7 +84,7 @@ public abstract class Tile {
         return tileMapAll;
     }
 
-    public boolean AltinVarMi(int[][] oyunAlani,int[] koordinat){
+    public static boolean AltinVarMi(int[][] oyunAlani,int[] koordinat){
         if(oyunAlani[koordinat[0]][koordinat[1]] > 0){
             return true;
         }
