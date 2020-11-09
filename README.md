@@ -17,10 +17,8 @@ CodeTiles Dokümantasyonu
 - görünür altınlar 5,10,15,20 gibi değerler alırken gizli olanları belirlemek için -5,-10,-15,-20 gibi değerleri kullanalım. uygulamaya dökerken daha kolay olur implement etmesi.
 
 
-## Projedeki Hashmap kullanımı
-Hashmap 2 şey içerecek:
+## Projedeki 2d Array kullanımı:
 
-- 1) id (0-400)
-- 2) Varsa altının değeri (5 minimum 20 maksimum)
-* Eğer altın yoksa 0 değeri verilecek
+- 2D array kullanacağız x ve y koordinatları olacak şekilde
+- Örneğin A oyuncusu (0,0)
 
