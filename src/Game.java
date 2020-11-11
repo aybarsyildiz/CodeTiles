@@ -1,14 +1,14 @@
 import java.awt.*;  
 import javax.swing.*; 
 
-public  class Game_interface {
+public  class Game {
   
    int a=5,b=5;
     JFrame game;
     JPanel panel;
     Btn[][] board = new Btn [a][b];
    
-   public Game_interface(){
+   public Game(){
       game = new JFrame("Gold Game");
       game.setSize(1500,1000);
       panel= new JPanel();
