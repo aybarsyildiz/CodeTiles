@@ -1,6 +1,7 @@
 import com.tile.engine.players.Player;
 import java.util.Scanner;
 import com.tile.engine.board.Tile;
+import com.tile.engine.players.A_oyuncusu;
 public class App {
     public static void main(String[] args) throws Exception {
         Login login= new Login();
@@ -19,7 +20,6 @@ public class App {
         aOyuncusu.koordinatlariGuncelle(aOyuncusununKoordinatlari);
         System.out.println("A oyuncusunun bir sağ birime hareket ettiğindeki konumu: "+aOyuncusu.playerPosition[0]+" "+aOyuncusu.playerPosition[1]);
         
-        
         Scanner scn = new Scanner(System.in);
         int tileSayisi = scn.nextInt();
         int[][] oyunAlani = new int[tileSayisi][tileSayisi];
@@ -33,6 +33,10 @@ public class App {
             }
             System.out.print("\n");
         }
+        
+        int[] enYakinAltinKoordinatlariA = A_oyuncusu.enYakinAltiniBul(oyunAlani, aOyuncusu.playerPosition, tileSayisi);
+        //[1] x koordinatı [0] y koordinatı niye bilmiyom
+        System.out.println("A oyuncusuna en yakın altının koordinatları: "+enYakinAltinKoordinatlariA[1]+" "+enYakinAltinKoordinatlariA[0]);
         
         
         
