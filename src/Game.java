@@ -1,30 +1,39 @@
 import java.awt.*;  
-import javax.swing.*; 
+import javax.swing.*;
+
+
+
+
 
 public  class Game {
-  
-   int a=5,b=5;
-    JFrame game;
+    
+    JFrame gameFrame;
     JPanel panel;
-    Btn[][] board = new Btn [a][b];
+    
    
    public Game(){
-      game = new JFrame("Gold Game");
-      game.setSize(1500,1000);
+    Login y = new Login();
+    int row =y.getRow();
+    int col =y.getCol();
+    Btn[][] board = new Btn [row][col];
+     System.out.println(col);
+     System.out.println(row);
+      gameFrame = new JFrame("Gold Game");
+      gameFrame.setSize(1500,1000);
       panel= new JPanel();
-      panel.setBounds(100,150,700,700); 
-      panel.setLayout(new GridLayout(a,b));
+      panel.setBounds(100,150,600,600); 
+      panel.setLayout(new GridLayout(row,col));
      
    
-    for (int i=0;i<a;i++){
-         for(int j=0;j<b;j++){
+    for (int i=0;i<row;i++){
+         for(int j=0;j<col;j++){
              Btn bt= new Btn(i,j);
              panel.add(bt);
              board[i][j]=bt;
          }
      }
 
-    game.add(panel);
+    gameFrame.add(panel);
     
     
     
@@ -35,10 +44,10 @@ public  class Game {
     
     
     
-    game.setLocationRelativeTo(null);
-    game.setLayout(null);
-    game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    game.setVisible(true);
+    gameFrame.setLocationRelativeTo(null);
+    gameFrame.setLayout(null);
+    gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    gameFrame.setVisible(true);
 
 
     }

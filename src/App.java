@@ -5,7 +5,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         // Game game = new Game();
         Login login= new Login();
-
+        login.loginFrame.setVisible(true);
 
 
 
