@@ -12,7 +12,8 @@ public class Login implements ActionListener{
    JLabel t1,t2;
    JTextField tf1,tf2;
    JButton btn,btn2;
-   private  int row=5,col=5;
+   
+   private static int row=5,col=5;
    
    public Login(){
     loginFrame = new JFrame();
@@ -27,15 +28,10 @@ public class Login implements ActionListener{
      t2.setBounds(20,50,50,20);
    
     
-    btn= new JButton("Sayıları yazdır");
+    btn= new JButton("Oyun");
     btn.setBounds(270,350,200,50);
     btn.addActionListener(this);
-    
-    btn2= new JButton("Oyun");
-    btn2.setBounds(320,300,100,50);
-    btn2.addActionListener(this);
-    
-    loginFrame.add(btn2);
+   
     loginFrame.add(tf2);
     loginFrame.add(btn);
     loginFrame.add(t1);
@@ -60,14 +56,11 @@ public void actionPerformed(ActionEvent e) {
    this.col = Integer.parseInt(tf2.getText());//Sayıyıyı ala baasınca sütun sayısını alıyor
    System.out.println(row);
    System.out.println(col);
-   
+   Game x =new Game();
+   loginFrame.setVisible(false);
   
   }
-  if(e.getSource()==btn2){
-    Game x =new Game();//play butonuna basınca Game frameini açıyor
-    loginFrame.setVisible(false);
-
-  }
+  
 }
 public int getRow(){
   return this.row;//Satırı game classına taşımak için

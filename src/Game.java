@@ -13,11 +13,12 @@ public  class Game {
    
    public Game(){
     Login y = new Login();
-    int row =y.getRow();
-    int col =y.getCol();
+    int row =y.getRow();//loginden alınan satır sayısını alma
+    int col =y.getCol();//loginden alınan sütun sayısını alma
+    System.out.println(col);
+    System.out.println(row);
     Btn[][] board = new Btn [row][col];
-     System.out.println(col);
-     System.out.println(row);
+     
       gameFrame = new JFrame("Gold Game");
       gameFrame.setSize(1500,1000);
       panel= new JPanel();
