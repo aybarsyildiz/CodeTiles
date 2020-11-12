@@ -56,24 +56,24 @@ public class Login implements ActionListener{
 @Override
 public void actionPerformed(ActionEvent e) {
   if(e.getSource()==btn){
-   this.row = Integer.parseInt(tf1.getText());
-   this.col = Integer.parseInt(tf2.getText());
+   this.row = Integer.parseInt(tf1.getText());//Sayıyıyı ala baasınca satır sayısını alıyor
+   this.col = Integer.parseInt(tf2.getText());//Sayıyıyı ala baasınca sütun sayısını alıyor
    System.out.println(row);
    System.out.println(col);
    
   
   }
   if(e.getSource()==btn2){
-    Game x =new Game();
+    Game x =new Game();//play butonuna basınca Game frameini açıyor
     loginFrame.setVisible(false);
 
   }
 }
 public int getRow(){
-  return this.row;
+  return this.row;//Satırı game classına taşımak için
 }
 public int getCol(){
-  return this.col;
+  return this.col;//Sütunu game classına taşımak için
 }
 
 
