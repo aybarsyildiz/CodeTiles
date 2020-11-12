@@ -36,7 +36,7 @@ public abstract class Tile {
         for (int i = 0; i < altinOlanKareSayisi; i++) {
             int value = rand.nextInt(toplamKareSayisi);
             
-            while(altinOlanKareler.contains(value)){
+            while(altinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == sayi-1 || value == toplamKareSayisi-(sayi-1)){
                 value = rand.nextInt(toplamKareSayisi);
             }
             
@@ -47,7 +47,7 @@ public abstract class Tile {
         for (int i = 0; i < gizliAltinOlanKareSayisi; i++) {
             int value = rand.nextInt(toplamKareSayisi);
             //eğer o karede zaten altın veya gizli altın varsa gizli altın koymaz
-            while(altinOlanKareler.contains(value) || gizliAltinOlanKareler.contains(value)){
+            while(altinOlanKareler.contains(value) || gizliAltinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == sayi-1 || value == toplamKareSayisi-(sayi-1)){
                 value = rand.nextInt(toplamKareSayisi);
             }
             
