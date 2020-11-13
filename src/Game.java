@@ -10,7 +10,6 @@ public  class Game {
     JFrame gameFrame;
     JPanel panel;
     
-   
    public Game(){
     Login y = new Login();
     int row =y.getRow();//loginden alınan satır sayısını alma
