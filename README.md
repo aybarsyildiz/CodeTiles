@@ -16,6 +16,7 @@ CodeTiles Dokümantasyonu
 - bu idlere rastgele olarak altın ve gizli altın yerleştirelim.
 - görünür altınlar 5,10,15,20 gibi değerler alırken gizli olanları belirlemek için -5,-10,-15,-20 gibi değerleri kullanalım. uygulamaya dökerken daha kolay olur implement etmesi.
 
+## C yi nasıl yazıcaz aga ya...
 
 ## Projedeki 2d Array kullanımı:
 
