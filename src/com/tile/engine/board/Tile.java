@@ -92,6 +92,16 @@ public abstract class Tile {
             return false;
         }
     }
+    public static boolean gizliAltinVarMi(int[][]oyunAlani, int[] koordinat){
+        if(oyunAlani[koordinat[0]][koordinat[1]]<0){
+
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
 
 
 

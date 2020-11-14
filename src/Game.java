@@ -1,5 +1,6 @@
 import java.awt.*;  
 import javax.swing.*;
+import com.tile.engine.board.Tile;
 
 
 
@@ -10,7 +11,7 @@ public  class Game {
     JFrame gameFrame;
     JPanel panel;
     
-   public Game(){
+   public Game(int[][] oyunAlani){
     Login y = new Login();
     int row =y.getRow();//loginden alınan satır sayısını alma
     int col =y.getCol();//loginden alınan sütun sayısını alma
@@ -28,8 +29,20 @@ public  class Game {
     for (int i=0;i<row;i++){
          for(int j=0;j<col;j++){
              Btn bt= new Btn(i,j);
+             int[] koordinat = {i,j};
+             bt.setOpaque(true);
+             if(Tile.AltinVarMi(oyunAlani, koordinat)){
+                bt.setBackground(Color.YELLOW);
+                bt.setText(Integer.toString(oyunAlani[i][j]));
+             }
+             if(Tile.gizliAltinVarMi(oyunAlani, koordinat)){
+                 bt.setBackground(Color.GRAY);
+             }
+            
              
              panel.add(bt);
+             
+            
              board[i][j]=bt;
          }
      }
