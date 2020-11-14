@@ -30,7 +30,7 @@ public abstract class Tile {
         int[] altinDegerleri = { 5, 10, 15, 20, -5, -10, -15, -20 };
         int toplamKareSayisi = sayi * sayi;
         int altinOlanKareSayisi = (toplamKareSayisi*20)/100;
-        int gizliAltinOlanKareSayisi = (toplamKareSayisi*10)/100;
+        int gizliAltinOlanKareSayisi = (altinOlanKareSayisi*10)/100;
 
         //görünür altın olan karelerin oluşturulması
         for (int i = 0; i < altinOlanKareSayisi; i++) {
