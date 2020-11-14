@@ -29,6 +29,7 @@ public class B_oyuncusu {
                     uzaklik = uzaklikBul(oyuncununXKoordinati,oyuncununYKoordinati,i,j);
                     if(maaliyet > MaaliyetHesapla(oyunAlani, tileKoordinati, uzaklik)){
                             maaliyet = MaaliyetHesapla(oyunAlani, tileKoordinati, uzaklik);
+                            System.out.println(i+" "+j+". en hesapli:"+ maaliyet);
                             enHesapliAltinKoordinatlari[0] = i;
                             enHesapliAltinKoordinatlari[1] = j;
 
