@@ -8,9 +8,10 @@ import java.util.Random;
 import com.tile.engine.players.Player;
 
 public abstract class Tile {
+    private static int sayi = 0;
     static Random rand = new Random();
     
-    public static int sayi = 20;
+    //public static int sayi = 20;
     //burdaki sayi değeri değişebilecek. default olarak tahta 20x20 o yüzden onu ekledik.
     Tile(){
         this.sayi = sayi;
@@ -30,7 +31,7 @@ public abstract class Tile {
         int[] altinDegerleri = { 5, 10, 15, 20, -5, -10, -15, -20 };
         int toplamKareSayisi = sayi * sayi;
         int altinOlanKareSayisi = (toplamKareSayisi*20)/100;
-        int gizliAltinOlanKareSayisi = (toplamKareSayisi*10)/100;
+        int gizliAltinOlanKareSayisi = (altinOlanKareSayisi*10)/100;
 
         //görünür altın olan karelerin oluşturulması
         for (int i = 0; i < altinOlanKareSayisi; i++) {
@@ -83,7 +84,7 @@ public abstract class Tile {
         
         return tileMapAll;
     }
-
+    
     public static boolean AltinVarMi(int[][] oyunAlani,int[] koordinat){
         if(oyunAlani[koordinat[0]][koordinat[1]] > 0){
             return true;
@@ -91,6 +92,16 @@ public abstract class Tile {
         else{
             return false;
         }
+    }
+    public static boolean gizliAltinVarMi(int[][]oyunAlani, int[] koordinat){
+        if(oyunAlani[koordinat[0]][koordinat[1]]<0){
+
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
 

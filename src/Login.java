@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.tile.engine.board.Tile;
+
 
 public class Login implements ActionListener{
    
@@ -17,7 +19,9 @@ public class Login implements ActionListener{
    
    private static int row=20,col=20;
    
-   public Login(){
+   public Login() {
+
+
     loginFrame = new JFrame();
     loginFrame.setSize(500,500);
      
@@ -189,14 +193,27 @@ public class Login implements ActionListener{
 
 }
 
+public Login(int[][] oyunAlani2) {
+}
+
 @Override
 public void actionPerformed(ActionEvent e) {
   if(e.getSource()==btn){
-   this.row = Integer.parseInt(rowText.getText());//Sayıyıyı ala baasınca satır sayısını alıyor
-   this.col = Integer.parseInt(colText.getText());//Sayıyıyı ala baasınca sütun sayısını alıyor
+    
+    try {
+      
+      this.row = Integer.parseInt(rowText.getText());//Sayıyıyı ala baasınca satır sayısını alıyor
+      this.col = Integer.parseInt(colText.getText());//Sayıyıyı ala baasınca sütun sayısını alıyor
+    } catch (Exception exception) {
+      System.out.println("Varsayılan boyut 20x20 ayarlandı.");
+      this.row = 20;
+      this.col = 20;
+    }
+   
    System.out.println(row);
    System.out.println(col);
-   Game x =new Game();
+   int[][] oyunAlani = Tile.createAllPossibleTiles(row);
+   Game x =new Game(oyunAlani);
    loginFrame.setVisible(false);
   
   }
