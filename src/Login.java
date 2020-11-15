@@ -199,8 +199,17 @@ public Login(int[][] oyunAlani2) {
 @Override
 public void actionPerformed(ActionEvent e) {
   if(e.getSource()==btn){
-   this.row = Integer.parseInt(rowText.getText());//Sayıyıyı ala baasınca satır sayısını alıyor
-   this.col = Integer.parseInt(colText.getText());//Sayıyıyı ala baasınca sütun sayısını alıyor
+    
+    try {
+      
+      this.row = Integer.parseInt(rowText.getText());//Sayıyıyı ala baasınca satır sayısını alıyor
+      this.col = Integer.parseInt(colText.getText());//Sayıyıyı ala baasınca sütun sayısını alıyor
+    } catch (Exception exception) {
+      System.out.println("Varsayılan boyut 20x20 ayarlandı.");
+      this.row = 20;
+      this.col = 20;
+    }
+   
    System.out.println(row);
    System.out.println(col);
    int[][] oyunAlani = Tile.createAllPossibleTiles(row);
