@@ -8,9 +8,10 @@ import java.util.Random;
 import com.tile.engine.players.Player;
 
 public abstract class Tile {
+    private static int sayi = 0;
     static Random rand = new Random();
     
-    public static int sayi = 20;
+    //public static int sayi = 20;
     //burdaki sayi değeri değişebilecek. default olarak tahta 20x20 o yüzden onu ekledik.
     Tile(){
         this.sayi = sayi;
@@ -83,7 +84,7 @@ public abstract class Tile {
         
         return tileMapAll;
     }
-
+    
     public static boolean AltinVarMi(int[][] oyunAlani,int[] koordinat){
         if(oyunAlani[koordinat[0]][koordinat[1]] > 0){
             return true;
