@@ -37,18 +37,21 @@ public abstract class Tile {
         for (int i = 0; i < altinOlanKareSayisi; i++) {
             int value = rand.nextInt(toplamKareSayisi);
             
-            while(altinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == row-1 || value == toplamKareSayisi-(row-1)){
+            while(altinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == row-1 || value == toplamKareSayisi-(row+1)){
                 value = rand.nextInt(toplamKareSayisi);
             }
             
             altinOlanKareler.add(value);
             
         }
+        System.out.println("cikmamasi gereken yer: "+(toplamKareSayisi-(row+1)));
         // gizli altın olan karelerin oluşturulması
         for (int i = 0; i < gizliAltinOlanKareSayisi; i++) {
             int value = rand.nextInt(toplamKareSayisi);
+            
             //eğer o karede zaten altın veya gizli altın varsa gizli altın koymaz
-            while(altinOlanKareler.contains(value) || gizliAltinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == row-1 || value == toplamKareSayisi-(row-1)){
+            while(altinOlanKareler.contains(value) || gizliAltinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == row-1 || value == toplamKareSayisi-(row+1)){
+                System.out.println("asd"+value);
                 value = rand.nextInt(toplamKareSayisi);
             }
             
