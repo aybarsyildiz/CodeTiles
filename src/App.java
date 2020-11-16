@@ -8,7 +8,22 @@ public class App {
         Login login= new Login();
         login.loginFrame.setVisible(true);
 
-
+        Tile tileCreated;
+        int[] aCoordinat = {0,0};
+        
+        //Oyuncuların hareket etmeleri vs bu şekilde olacak.
+        Player aOyuncusu = new Player(aCoordinat,200);
+        int[] oyunAlaniBoyutu = {20,20};
+        int[][] oyunAlani = Tile.createAllPossibleTiles(20,20,20,10);
+        int[] aEnYakinKoordinatlar = A_oyuncusu.enYakinAltiniBul(oyunAlani, aCoordinat,oyunAlaniBoyutu);
+        while(aOyuncusu.altinSayisi>0){
+            int[] aYeniKoordinatlar = aOyuncusu.koordinatlariGuncelle(aEnYakinKoordinatlar);
+            aOyuncusu.altinGuncelle(5);
+            System.out.println("yeni altın sayısı: "+aOyuncusu.altinSayisi);
+            System.out.println("a oyuncusu yeni koordinatlari: "+aYeniKoordinatlar[0]+" "+aYeniKoordinatlar[1]);
+            aEnYakinKoordinatlar = A_oyuncusu.enYakinAltiniBul(oyunAlani, aCoordinat,oyunAlaniBoyutu);
+        }
+        
 
 /* TEST
         Tile tileCreated;
