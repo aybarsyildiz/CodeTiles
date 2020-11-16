@@ -10,7 +10,7 @@ public class App {
 
 
 
-/*
+/* TEST
         Tile tileCreated;
         int[] aCoordinat = {0,0};
         

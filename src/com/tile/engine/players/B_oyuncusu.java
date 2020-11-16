@@ -4,9 +4,8 @@ import com.tile.engine.board.Tile;
 public class B_oyuncusu {
 
     private static double uzaklikBul(int x1, int y1, int x2, int y2){
-        double x = Math.pow(x2 - x1,2);
-        double y = Math.pow(y2 - y1,2);
-        return Math.sqrt(x+y);
+        return Math.abs(x2-x1) + Math.abs(y2-y1);
+        
     }
     
     private static double MaaliyetHesapla(int[][] oyunAlani,int[] altinKoordinati, double uzaklik){

@@ -8,11 +8,12 @@ public class Player {
 
     
     public int[] playerPosition = new int[2];
-    
+    public int altinSayisi;
 
-    public Player( int[] playerPosition){
+    public Player( int[] playerPosition,int altinSayisi){
 
             this.playerPosition = playerPosition;
+            this.altinSayisi = altinSayisi;
             
 
     }

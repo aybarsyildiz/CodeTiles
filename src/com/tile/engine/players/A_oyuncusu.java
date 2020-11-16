@@ -6,9 +6,7 @@ public class A_oyuncusu {
     
     //uzaklık hesaplaması
     private static double uzaklikBul(int x1, int y1, int x2, int y2){
-        double x = Math.pow(x2 - x1,2);
-        double y = Math.pow(y2 - y1,2);
-        return Math.sqrt(x+y);
+        return Math.abs(x2-x1) + Math.abs(y2-y1);
     }
 
 
