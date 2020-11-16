@@ -27,6 +27,11 @@ public class Player {
         return playerPosition;
     }
 
+    public int altinGuncelle(int azalanAltin){
+        this.altinSayisi -= azalanAltin;
+        return altinSayisi;
+    }
+
     
     //public abstract List<Move> calculateLegalMoves(final Board board);//pyuncunun yapabileceği hamlelerin listesi
 }
