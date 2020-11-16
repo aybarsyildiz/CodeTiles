@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
@@ -102,7 +103,7 @@ public  class Game {
     gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     gameFrame.setVisible(true);
     int[] oyunAlaniBoyutu = {row,col};
-
+    
 /* //OYUN LOOPU (AMA ÇALIŞMIYOR)
     while(aOyuncusu.altinSayisi!=0){
         //board[aKoordinatlari[0]][aKoordinatlari[1]].setText(" ");
