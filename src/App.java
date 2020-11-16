@@ -10,7 +10,7 @@ public class App {
 
 
 
-
+/*
         Tile tileCreated;
         int[] aCoordinat = {0,0};
         
@@ -46,6 +46,7 @@ public class App {
         System.out.println("B oyuncusu için en hesaplı altın koordinatları: "+ enHesapliAltinKoordinatlariB[0]+" "+enHesapliAltinKoordinatlariB[1]);
         
         
-        
+       */ 
     }
+    
 }

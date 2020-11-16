@@ -17,7 +17,7 @@ public class Login implements ActionListener{
    bMoveText,bTargetText,cMoveText,cTargetText,dMoveText,dTargetText;
    JButton btn;
    
-   private static int row=20,col=20;
+   private static int row=20,col=20,altınOranı=20,gAltınOranı=10;
    
    public Login() {
 
@@ -192,27 +192,32 @@ public class Login implements ActionListener{
 
 
 }
-
+/*
 public Login(int[][] oyunAlani2) {
 }
-
+*/
 @Override
 public void actionPerformed(ActionEvent e) {
   if(e.getSource()==btn){
     
     try {
       
-      this.row = Integer.parseInt(rowText.getText());//Sayıyıyı ala baasınca satır sayısını alıyor
-      this.col = Integer.parseInt(colText.getText());//Sayıyıyı ala baasınca sütun sayısını alıyor
+      this.row = Integer.parseInt(rowText.getText());//Play'e baasınca satır sayısını alıyor
+      this.col = Integer.parseInt(colText.getText());// Play'e basınca sütun sayısını alıyor
+      this.altınOranı= Integer.parseInt(gRateText.getText());//Play'e basınca altın oranını alıyor
+      this.altınOranı= Integer.parseInt(sGoldRateText.getText());// Play'e basınca gizli altın oranını alıyor
+
     } catch (Exception exception) {
       System.out.println("Varsayılan boyut 20x20 ayarlandı.");
       this.row = 20;
       this.col = 20;
+      this.altınOranı=20;
+      this.gAltınOranı=10;
     }
    
    System.out.println(row);
    System.out.println(col);
-   int[][] oyunAlani = Tile.createAllPossibleTiles(row);
+   int[][] oyunAlani = Tile.createAllPossibleTiles(row,col,altınOranı,gAltınOranı);
    Game x =new Game(oyunAlani);
    loginFrame.setVisible(false);
   

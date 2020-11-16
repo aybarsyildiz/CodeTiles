@@ -8,15 +8,18 @@ import com.tile.engine.board.Tile;
 
 public  class Game {
     
-    JFrame gameFrame;
-    JPanel panel;
-    
-   public Game(int[][] oyunAlani){
+    public Game(int[][] oyunAlani){
     try {
         UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
      } catch (Exception e) {
                 e.printStackTrace();
      }
+     
+    JFrame gameFrame;
+    JPanel panel;
+    
+    
+    
     Login y = new Login();
     int row =y.getRow();//loginden alınan satır sayısını alma
     int col =y.getCol();//loginden alınan sütun sayısını alma
@@ -33,8 +36,11 @@ public  class Game {
    
     for (int i=0;i<row;i++){
          for(int j=0;j<col;j++){
-             Btn bt= new Btn(i,j);
-             int[] koordinat = {i,j};
+            
+            
+            
+            Btn bt= new Btn(i,j);
+            int[] koordinat = {i,j};
              bt.setOpaque(true);
              bt.setBorderPainted(true);
              if(Tile.AltinVarMi(oyunAlani, koordinat)){

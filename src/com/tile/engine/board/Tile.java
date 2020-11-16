@@ -8,36 +8,36 @@ import java.util.Random;
 import com.tile.engine.players.Player;
 
 public abstract class Tile {
-    private static int sayi = 0;
+    private static int row =0,col =0,altınOranı=0,gAltınOranı=0;
     static Random rand = new Random();
+    
+
+
     
     //public static int sayi = 20;
     //burdaki sayi değeri değişebilecek. default olarak tahta 20x20 o yüzden onu ekledik.
-    Tile(){
-        this.sayi = sayi;
-    }
-
+    
     //private static final Map<Integer, Integer> ALL_TILES = createAllPossibleTiles(sayi);
-    public static final int[][] TILES_ALL = createAllPossibleTiles(sayi);
+    public static final int[][] TILES_ALL = createAllPossibleTiles(row,col,altınOranı,gAltınOranı);
     
     // hash-map kullanarak board oluşturulması
-    public static int[][] createAllPossibleTiles(int sayi) {
+    public static int[][] createAllPossibleTiles(int row,int col,int altınOranı,int gAltınOranı) {
 
         //final Map<Integer, Integer> allTileMap = new HashMap<>();
-        final int[][] tileMapAll = new int[sayi][sayi];
+        final int[][] tileMapAll = new int[row][col];
 
         ArrayList<Integer> altinOlanKareler = new ArrayList<>();
         ArrayList<Integer> gizliAltinOlanKareler = new ArrayList<>();
         int[] altinDegerleri = { 5, 10, 15, 20, -5, -10, -15, -20 };
-        int toplamKareSayisi = sayi * sayi;
-        int altinOlanKareSayisi = (toplamKareSayisi*20)/100;
-        int gizliAltinOlanKareSayisi = (altinOlanKareSayisi*10)/100;
+        int toplamKareSayisi = row * col;
+        int altinOlanKareSayisi = (toplamKareSayisi*altınOranı)/100;//oran değişecek
+        int gizliAltinOlanKareSayisi = (altinOlanKareSayisi*gAltınOranı)/100;//oran değişecek
 
         //görünür altın olan karelerin oluşturulması
         for (int i = 0; i < altinOlanKareSayisi; i++) {
             int value = rand.nextInt(toplamKareSayisi);
             
-            while(altinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == sayi-1 || value == toplamKareSayisi-(sayi-1)){
+            while(altinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == row-1 || value == toplamKareSayisi-(row-1)){
                 value = rand.nextInt(toplamKareSayisi);
             }
             
@@ -48,7 +48,7 @@ public abstract class Tile {
         for (int i = 0; i < gizliAltinOlanKareSayisi; i++) {
             int value = rand.nextInt(toplamKareSayisi);
             //eğer o karede zaten altın veya gizli altın varsa gizli altın koymaz
-            while(altinOlanKareler.contains(value) || gizliAltinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == sayi-1 || value == toplamKareSayisi-(sayi-1)){
+            while(altinOlanKareler.contains(value) || gizliAltinOlanKareler.contains(value) || value == 0 || value == toplamKareSayisi-1 || value == row-1 || value == toplamKareSayisi-(row-1)){
                 value = rand.nextInt(toplamKareSayisi);
             }
             
@@ -63,7 +63,7 @@ public abstract class Tile {
 
                 if(i == altinOlanKareler.get(j)){
                     //allTileMap.put(i,altinDegerleri[rand.nextInt(4)]);
-                    tileMapAll[altinOlanKareler.get(j)%sayi][altinOlanKareler.get(j)/sayi] = altinDegerleri[rand.nextInt(4)];
+                    tileMapAll[altinOlanKareler.get(j)/row][altinOlanKareler.get(j)%col] = altinDegerleri[rand.nextInt(4)];
                     
                 }
                 
@@ -71,7 +71,7 @@ public abstract class Tile {
             for(int k = 0; k<gizliAltinOlanKareler.size(); k++){
                 if(i == gizliAltinOlanKareler.get(k)){
 
-                    tileMapAll[gizliAltinOlanKareler.get(k)%sayi][gizliAltinOlanKareler.get(k)/sayi] = altinDegerleri[rand.nextInt(4)+4];
+                    tileMapAll[gizliAltinOlanKareler.get(k)/row][gizliAltinOlanKareler.get(k)%col] = altinDegerleri[rand.nextInt(4)+4];
                     //allTileMap.put(i,altinDegerleri[rand.nextInt(4)+4]);
                     
                 }
