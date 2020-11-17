@@ -1,3 +1,4 @@
+import com.tile.engine.board.Move;
 import com.tile.engine.players.Player;
 import java.util.Scanner;
 import com.tile.engine.board.Tile;
@@ -5,6 +6,10 @@ import com.tile.engine.players.A_oyuncusu;
 import com.tile.engine.players.B_oyuncusu;
 public class App {
     public static void main(String[] args) throws Exception {
+        int[] kordinat =Move.yeniKordinat(2, 3, 2, 1);
+        System.out.println("x"+kordinat[0]);
+        System.out.println("y"+kordinat[1]);
+        
         Login login= new Login();
         login.loginFrame.setVisible(true);
 

@@ -43,7 +43,7 @@ public  class Game {
       gameFrame = new JFrame("Gold Game");
       gameFrame.setSize(1500,1000);
       panel= new JPanel();
-      panel.setBounds(100,150,50*row,600); 
+      panel.setBounds(100,150,1000,600); 
       panel.setLayout(new GridLayout(row,col));
      
    
