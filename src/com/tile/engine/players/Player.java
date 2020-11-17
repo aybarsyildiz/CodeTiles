@@ -32,6 +32,11 @@ public class Player {
         return altinSayisi;
     }
 
+    public int altinKazan(int altin){
+        this.altinSayisi += altin;
+        return altinSayisi;
+    }
+
     
     //public abstract List<Move> calculateLegalMoves(final Board board);//pyuncunun yapabileceği hamlelerin listesi
 }
