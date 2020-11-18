@@ -9,6 +9,7 @@ public class Player {
     
     public int[] playerPosition = new int[2];
     public int altinSayisi;
+    public boolean hedefVarmı=false;
 
     public Player( int[] playerPosition,int altinSayisi){
 
@@ -27,11 +28,15 @@ public class Player {
         return playerPosition;
     }
 
-    public int altinGuncelle(int azalanAltin){
-        this.altinSayisi -= azalanAltin;
+    public int altinGuncelle(int değişenAltin){
+        this.altinSayisi += değişenAltin;
         return altinSayisi;
     }
-
-    
+    public void hedefKontrol (boolean hedefVarmı){
+        this.hedefVarmı =hedefVarmı;
+    }
+    public boolean hedefVarm (){
+        return hedefVarmı;
+    }
     //public abstract List<Move> calculateLegalMoves(final Board board);//pyuncunun yapabileceği hamlelerin listesi
 }

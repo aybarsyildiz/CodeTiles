@@ -17,7 +17,7 @@ public class Login implements ActionListener{
    bMoveText,bTargetText,cMoveText,cTargetText,dMoveText,dTargetText;
    JButton btn;
    
-   private static int row=20,col=20,altınOranı=20,gAltınOranı=10;
+   private static int row=20,col=20,altınOranı=20,gAltınOranı=10,oyuncuAltını=200;
    
    public Login() {
 
@@ -206,6 +206,8 @@ public void actionPerformed(ActionEvent e) {
       this.col = Integer.parseInt(colText.getText());// Play'e basınca sütun sayısını alıyor
       this.altınOranı= Integer.parseInt(gRateText.getText());//Play'e basınca altın oranını alıyor
       this.altınOranı= Integer.parseInt(sGoldRateText.getText());// Play'e basınca gizli altın oranını alıyor
+      this.oyuncuAltını= Integer.parseInt(pGoldText.getText());// Play'e basınca oyuncu altınını alıyor
+
 
     } catch (Exception exception) {
       System.out.println("Varsayılan boyut 20x20 ayarlandı.");
@@ -213,6 +215,7 @@ public void actionPerformed(ActionEvent e) {
       this.col = 20;
       this.altınOranı=20;
       this.gAltınOranı=10;
+      this.oyuncuAltını=200;
     }
    
    System.out.println(row);
@@ -230,6 +233,8 @@ public int getRow(){
 public int getCol(){
   return this.col;//Sütunu game classına taşımak için
 }
-
+public int getOyuncuAltını(){
+  return this.oyuncuAltını;//Satırı game classına taşımak için
+}
 
 }

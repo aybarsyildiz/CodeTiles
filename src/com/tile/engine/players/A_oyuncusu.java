@@ -14,7 +14,7 @@ public class A_oyuncusu {
         
         int oyuncununXKoordinati = oyuncuKoordinatlari[0];
         int oyuncununYKoordinati = oyuncuKoordinatlari[1];
-        int[] enYakinAltinKoordinatlari = {oyunAlaniBoyutu[0]-1, oyunAlaniBoyutu[1]-1};
+        int[] enYakinAltinKoordinatlari = {50000000,50000000};
         double uzaklik = uzaklikBul(oyuncununXKoordinati, oyuncununYKoordinati, enYakinAltinKoordinatlari[0], enYakinAltinKoordinatlari[1]);
         for (int i = 0; i < oyunAlaniBoyutu[0]; i++) {
             for (int j = 0; j < oyunAlaniBoyutu[1] ; j++) {

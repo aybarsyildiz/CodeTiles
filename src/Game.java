@@ -5,15 +5,19 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 import com.tile.engine.board.Tile;
 import com.tile.engine.players.*;
-
-
-
-
+import java.util.TimerTask;
+import java.util.Timer;
+import com.tile.engine.players.A_oyuncusu;
+import com.tile.engine.players.B_oyuncusu;
+import com.tile.engine.board.Move;
 
 public  class Game {
     
     public Game(int[][] oyunAlani){
-    try {
+      
+      
+       
+      try {
         UIManager.setLookAndFeel( UIManager.getCrossPlatformLookAndFeelClassName() );
      } catch (Exception e) {
                 e.printStackTrace();
@@ -28,16 +32,14 @@ public  class Game {
     Login y = new Login();
     int row =y.getRow();//loginden alınan satır sayısını alma
     int col =y.getCol();//loginden alınan sütun sayısını alma
-    System.out.println(col);
-    System.out.println(row);
-
+    int oyuncuAltını=y.getOyuncuAltını();
     int[] aKoordinatlari = {0,0};
     int[] bKoordinatlari = {0,col-1};
     int[] cKoordinatlari = {row-1,0};
     int[] dKoordinatlari = {row-1,col-1};
-    Player aOyuncusu = new Player(aKoordinatlari, 200);
-    Player bOyuncusu = new Player(bKoordinatlari,200);
-
+    Player aOyuncusu = new Player(aKoordinatlari,oyuncuAltını);
+    Player bOyuncusu = new Player(bKoordinatlari,oyuncuAltını);
+    
     Btn[][] board = new Btn [row][col];
      
       gameFrame = new JFrame("Gold Game");
@@ -60,6 +62,7 @@ public  class Game {
              if(Tile.AltinVarMi(oyunAlani, koordinat)){
                 bt.setBackground(Color.YELLOW);
                 bt.setText(Integer.toString(oyunAlani[i][j]));
+                bt.altınEkle(oyunAlani[i][j]);
                 //bt.setBorderPainted(false);
              }
              if(Tile.gizliAltinVarMi(oyunAlani, koordinat)){
@@ -102,8 +105,67 @@ public  class Game {
     gameFrame.setLayout(null);
     gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     gameFrame.setVisible(true);
-    int[] oyunAlaniBoyutu = {row,col};
     
+    
+    //////////////////////////////////////////////// oyun
+    int[] oyunAlaniBoyutu = {row,col};
+    for(int i=0;i<row;i++){
+        for(int j=0;j<col;j++){
+            System.out.print(oyunAlani[i][j]+" ");
+        }
+        System.out.println("\n");
+
+     }
+   
+     
+     Timer timer = new Timer();
+     TimerTask aOyuncu = new TimerTask(){
+      @Override
+      public void run(){
+
+         if (aOyuncusu.hedefVarm() == false) {
+            aOyuncusu.altinGuncelle(-5);
+            aOyuncusu.hedefKontrol(true);
+            System.out.println("a oyuncusu altın:"+aOyuncusu.altinSayisi);
+        }
+        
+         int[] aEnYakinKoordinatlar = A_oyuncusu.enYakinAltiniBul(oyunAlani,aOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu);
+         System.out.println("altın konumu:" +aEnYakinKoordinatlar[0]+" "+aEnYakinKoordinatlar[1]);
+         
+        
+         int[] kordinat =Move.yeniKordinat(aOyuncusu.suAnkiKoordinat(),aEnYakinKoordinatlar);
+         System.out.println("oyuncu konumu"+ kordinat[0]+" "+kordinat[1]);
+         
+         aOyuncusu.koordinatlariGuncelle(kordinat);
+         System.out.println("son hamle :"+Move.sonHamle());
+         aOyuncusu.altinGuncelle(Move.sonHamle()*(-5));
+         System.out.println("+a oyuncusu altın:"+aOyuncusu.altinSayisi);
+         board[kordinat[0]][kordinat[1]].setText("A");
+
+        
+         if(kordinat[0]==aEnYakinKoordinatlar[0] && kordinat[1]==aEnYakinKoordinatlar[1]){
+              oyunAlani[kordinat[0]][kordinat[1]]=0;
+              board[kordinat[0]][kordinat[1]].setText("0");
+              aOyuncusu.hedefKontrol(false);
+              System.out.println("altın"+board[kordinat[0]][kordinat[1]].kordinatAltını());
+              aOyuncusu.altinSayisi+=board[kordinat[0]][kordinat[1]].kordinatAltını();
+        }
+    
+    
+    
+    
+        if(aOyuncusu.altinSayisi<=0){
+        System.out.println("A oyuncusu elendi");
+        timer.cancel();
+    }
+    
+    
+    
+    
+    }
+    };
+    timer.schedule(aOyuncu,0,1000);
+
 /* //OYUN LOOPU (AMA ÇALIŞMIYOR)
     while(aOyuncusu.altinSayisi!=0){
         //board[aKoordinatlari[0]][aKoordinatlari[1]].setText(" ");

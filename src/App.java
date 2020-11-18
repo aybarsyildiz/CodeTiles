@@ -6,9 +6,8 @@ import com.tile.engine.players.A_oyuncusu;
 import com.tile.engine.players.B_oyuncusu;
 public class App {
     public static void main(String[] args) throws Exception {
-        int[] kordinat =Move.yeniKordinat(2, 3, 2, 1);
-        System.out.println("x"+kordinat[0]);
-        System.out.println("y"+kordinat[1]);
+        // ilk iki oyuncu kordinat 2. si altın kordinatı
+       
         
         Login login= new Login();
         login.loginFrame.setVisible(true);
@@ -22,7 +21,7 @@ public class App {
         int[][] oyunAlani = Tile.createAllPossibleTiles(20,20,20,10);
         int[] aEnYakinKoordinatlar = A_oyuncusu.enYakinAltiniBul(oyunAlani, aCoordinat,oyunAlaniBoyutu);
         while(aOyuncusu.altinSayisi>0){
-            
+             
             int[] aYeniKoordinatlar = aOyuncusu.koordinatlariGuncelle(aEnYakinKoordinatlar);
             aOyuncusu.altinGuncelle(5);
             oyunAlani[aEnYakinKoordinatlar[0]][aEnYakinKoordinatlar[1]]=0;

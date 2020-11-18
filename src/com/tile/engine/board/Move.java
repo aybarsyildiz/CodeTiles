@@ -3,6 +3,7 @@ package com.tile.engine.board;
 public class Move 
 {
    private static int hamle=3;
+   private static int sonHamleSayısı=0;
 
  /*   Move(){
     this.altınX=altınX;
@@ -11,14 +12,16 @@ public class Move
     this.playerY=playerY;
     }
   */  
- public static int[] yeniKordinat(int oyuncuX,int oyuncuY,int altınX,int altınY)
+ public static int[] yeniKordinat(int[] oyuncu ,int[] altın)
  { 
-   int oX=oyuncuX,oY=oyuncuY,aX=altınX,aY=altınY;//bura array alıcak şimdilik böyle
+   int oX=oyuncu[0],oY=oyuncu[1],aX=altın[0],aY=altın[1];//bura array alıcak şimdilik böyle
+  
    int[] oyuncuKordinatı = {oX,oY};
     if((Math.abs(aX-oX)+Math.abs(aY-oY))<=hamle)
-    {
+    {   
         oyuncuKordinatı[0]=aX;
         oyuncuKordinatı[1]=aY;    
+        sonHamleSayısı=(Math.abs(aX-oX)+Math.abs(aY-oY));
     }    
     else if((Math.abs(aX-oX)+Math.abs(aY-oY))>hamle)
     {
@@ -34,6 +37,7 @@ public class Move
             } 
             oyuncuKordinatı[0]=oX;
             oyuncuKordinatı[1]=oY;
+            sonHamleSayısı=hamle;
         }
        
         else if(0<Math.abs(aX-oX) && Math.abs(aX-oX)<hamle)
@@ -49,13 +53,14 @@ public class Move
             oX=aX;
             oyuncuKordinatı[0]=oX;
             oyuncuKordinatı[1]=oY;
+            sonHamleSayısı=hamle;
         }
        
         else if((Math.abs(aY-oY))>hamle)
         {
             if((aY-oY)>0)
             {
-                oX=oX+3;
+                oY=oY+3;
             }
             else if((aY-oY)<0)
             {
@@ -63,6 +68,7 @@ public class Move
             } 
             oyuncuKordinatı[0]=oX;
             oyuncuKordinatı[1]=oY;
+            sonHamleSayısı=hamle;
         }
     }
    
@@ -70,7 +76,9 @@ public class Move
     return oyuncuKordinatı; 
  }
 
-
+  public static int sonHamle(){
+      return sonHamleSayısı;
+  }
 
 
 

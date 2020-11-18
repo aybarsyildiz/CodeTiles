@@ -12,11 +12,11 @@ public class B_oyuncusu {
         return  (uzaklik *2) - oyunAlani[altinKoordinati[0]][altinKoordinati[1]];
     }   
 
-    public static int[] enHesapliAltiniBul(int[][] oyunAlani, int[] oyuncuKoordinatlari,int oyunAlaniBoyutu){
+    public static int[] enHesapliAltiniBul(int[][] oyunAlani, int[] oyuncuKoordinatlari,int[] oyunAlaniBoyutu){
         
         int oyuncununXKoordinati = oyuncuKoordinatlari[0];
         int oyuncununYKoordinati = oyuncuKoordinatlari[1];
-        int[] enHesapliAltinKoordinatlari = {oyunAlaniBoyutu-1, oyunAlaniBoyutu-1};
+        int[] enHesapliAltinKoordinatlari = {500000000, 500000000};
         double uzaklik = uzaklikBul(oyuncununXKoordinati, oyuncununYKoordinati, enHesapliAltinKoordinatlari[0], enHesapliAltinKoordinatlari[1]);
         double maaliyet = MaaliyetHesapla(oyunAlani, enHesapliAltinKoordinatlari, uzaklik);
 
