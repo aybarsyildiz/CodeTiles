@@ -44,6 +44,7 @@ public class C_oyuncusu {
                         maaliyet = MaaliyetHesapla(oyunAlani, tileKoordinati,uzaklik);
                         enHesapliAltinKoordinatlari[0] = i;
                         enHesapliAltinKoordinatlari[1] = j;
+                        System.out.println("gizli altın bulundu gizli altına gidiliyor.");
 
                     }
 

@@ -122,7 +122,17 @@ public  class Game {
      TimerTask aOyuncu = new TimerTask(){
       @Override
       public void run(){
+        int[][] hedefAlinanKareler = new int[2][3];
+        /*
+            hedef alınan kareler:
+            0 0 --> A'nın hedef aldığı kare
+            0 0 --> B'nin hedef aldığı kare
+            0 0 --> C'nin hedef aldığı kare
 
+            D oyuncusu hedef belirlerken bunları kontrol eder,
+            hedef aldığı kare eğer buradaki karelerle çakışıyorsa
+            o kareyi hedef almaz.
+        */
          if (aOyuncusu.hedefVarm() == false) {
             aOyuncusu.altinGuncelle(-5);
             aOyuncusu.hedefKontrol(true);
