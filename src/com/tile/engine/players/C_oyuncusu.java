@@ -1,13 +1,18 @@
 package com.tile.engine.players;
 
+import com.tile.engine.board.Tile;
+
 public class C_oyuncusu {
-    /*
+    
     private static double uzaklikBul(int x1, int y1, int x2, int y2){
         return Math.abs(x2-x1) + Math.abs(y2-y1);
         
     }
     
     private static double MaaliyetHesapla(int[][] oyunAlani,int[] altinKoordinati, double uzaklik){
+        if( oyunAlani[altinKoordinati[0]][altinKoordinati[1]] < 0){
+            return (uzaklik*5)+ oyunAlani[altinKoordinati[0]][altinKoordinati[1]];
+        }
         return   (uzaklik*5)-oyunAlani[altinKoordinati[0]][altinKoordinati[1]];
     }   
 
@@ -32,6 +37,17 @@ public class C_oyuncusu {
                             enHesapliAltinKoordinatlari[1] = j;
 
                     }
+                }
+                if(Tile.gizliAltinVarMi(oyunAlani, tileKoordinati)){
+                    uzaklik = uzaklikBul(oyuncununXKoordinati, oyuncununYKoordinati, i,j);
+                    if(maaliyet > MaaliyetHesapla(oyunAlani, tileKoordinati,uzaklik)){
+                        maaliyet = MaaliyetHesapla(oyunAlani, tileKoordinati,uzaklik);
+                        enHesapliAltinKoordinatlari[0] = i;
+                        enHesapliAltinKoordinatlari[1] = j;
+
+                    }
+
+
                 }
 
 
@@ -61,5 +77,5 @@ public class C_oyuncusu {
 
 
 
-*/
+
 }

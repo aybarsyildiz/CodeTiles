@@ -145,7 +145,8 @@ public  class Game {
         
          if(kordinat[0]==aEnYakinKoordinatlar[0] && kordinat[1]==aEnYakinKoordinatlar[1]){
               oyunAlani[kordinat[0]][kordinat[1]]=0;
-              board[kordinat[0]][kordinat[1]].setText("0");
+              board[kordinat[0]][kordinat[1]].setText(" ");
+              board[kordinat[0]][kordinat[1]].setBackground(Color.WHITE);
               aOyuncusu.hedefKontrol(false);
               System.out.println("altın"+board[kordinat[0]][kordinat[1]].kordinatAltını());
               aOyuncusu.altinSayisi+=board[kordinat[0]][kordinat[1]].kordinatAltını();
