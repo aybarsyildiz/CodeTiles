@@ -1,8 +1,7 @@
 package com.tile.engine.players;
-import com.tile.engine.board.Tile;
 
-public class B_oyuncusu {
-
+public class C_oyuncusu {
+    /*
     private static double uzaklikBul(int x1, int y1, int x2, int y2){
         return Math.abs(x2-x1) + Math.abs(y2-y1);
         
@@ -43,4 +42,24 @@ public class B_oyuncusu {
 
         return enHesapliAltinKoordinatlari;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
 }

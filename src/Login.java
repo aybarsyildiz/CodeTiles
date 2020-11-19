@@ -192,20 +192,17 @@ public class Login implements ActionListener{
 
 
 }
-/*
-public Login(int[][] oyunAlani2) {
-}
-*/
+
 @Override
-public void actionPerformed(ActionEvent e) {
+public  void actionPerformed(ActionEvent e) {
   if(e.getSource()==btn){
     
     try {
       
-      this.row = Integer.parseInt(rowText.getText());//Play'e baasınca satır sayısını alıyor
+      this.row = Integer.parseInt(rowText.getText());// Play'e baasınca satır sayısını alıyor
       this.col = Integer.parseInt(colText.getText());// Play'e basınca sütun sayısını alıyor
       this.altınOranı= Integer.parseInt(gRateText.getText());//Play'e basınca altın oranını alıyor
-      this.altınOranı= Integer.parseInt(sGoldRateText.getText());// Play'e basınca gizli altın oranını alıyor
+      this.gAltınOranı= Integer.parseInt(sGoldRateText.getText());// Play'e basınca gizli altın oranını alıyor
       this.oyuncuAltını= Integer.parseInt(pGoldText.getText());// Play'e basınca oyuncu altınını alıyor
 
 
@@ -220,6 +217,8 @@ public void actionPerformed(ActionEvent e) {
    
    System.out.println(row);
    System.out.println(col);
+   System.out.println(altınOranı);
+   System.out.println(gAltınOranı);
    int[][] oyunAlani = Tile.createAllPossibleTiles(row,col,altınOranı,gAltınOranı);
    Game x =new Game(oyunAlani);
    loginFrame.setVisible(false);

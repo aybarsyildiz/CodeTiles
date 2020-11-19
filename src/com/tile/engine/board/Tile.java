@@ -7,8 +7,9 @@ import java.util.Random;
 
 import com.tile.engine.players.Player;
 
-public abstract class Tile {
-    private static int row =0,col =0,altınOranı=0,gAltınOranı=0;
+public abstract class Tile
+{
+    //private static int row =0,col =0,altınOranı=0,gAltınOranı=0;
     static Random rand = new Random();
     
 
@@ -18,10 +19,11 @@ public abstract class Tile {
     //burdaki sayi değeri değişebilecek. default olarak tahta 20x20 o yüzden onu ekledik.
     
     //private static final Map<Integer, Integer> ALL_TILES = createAllPossibleTiles(sayi);
-    public static final int[][] TILES_ALL = createAllPossibleTiles(row,col,altınOranı,gAltınOranı);
+    //public static final int[][] TILES_ALL = createAllPossibleTiles(row,col,altınOranı,gAltınOranı);
     
     // hash-map kullanarak board oluşturulması
-    public static int[][] createAllPossibleTiles(int row,int col,int altınOranı,int gAltınOranı) {
+    public static int[][] createAllPossibleTiles(int row,int col,int altınOranı,int gAltınOranı) 
+    {    System.out.println("alın gizli altın"+row+" "+col+" "+altınOranı+" "+gAltınOranı);
 
         //final Map<Integer, Integer> allTileMap = new HashMap<>();
         final int[][] tileMapAll = new int[row][col];
@@ -31,8 +33,9 @@ public abstract class Tile {
         int[] altinDegerleri = { 5, 10, 15, 20, -5, -10, -15, -20 };
         int toplamKareSayisi = row * col;
         int altinOlanKareSayisi = (toplamKareSayisi*altınOranı)/100;//oran değişecek
+        System.out.println("altın olan kare sayısı"+altinOlanKareSayisi);
         int gizliAltinOlanKareSayisi = (altinOlanKareSayisi*gAltınOranı)/100;//oran değişecek
-
+        System.out.println("gizli altın olan kare sayısı"+gizliAltinOlanKareSayisi);
         //görünür altın olan karelerin oluşturulması
         for (int i = 0; i < altinOlanKareSayisi; i++) {
             int value = rand.nextInt(toplamKareSayisi);
@@ -60,11 +63,14 @@ public abstract class Tile {
         }
 
         //altın olan ve gizli altın olan karelerin yerleştirilmesi
-        for (int i = 0; i < toplamKareSayisi; i++) {
+        for (int i = 0; i < toplamKareSayisi; i++) 
+        {
             
-            for(int j = 0; j< altinOlanKareler.size(); j++){
+            for(int j = 0; j< altinOlanKareler.size(); j++)
+            {
 
-                if(i == altinOlanKareler.get(j)){
+                if(i == altinOlanKareler.get(j))
+                {
                     //allTileMap.put(i,altinDegerleri[rand.nextInt(4)]);
                     tileMapAll[altinOlanKareler.get(j)/row][altinOlanKareler.get(j)%col] = altinDegerleri[rand.nextInt(4)];
                     
@@ -88,20 +94,28 @@ public abstract class Tile {
         return tileMapAll;
     }
     
-    public static boolean AltinVarMi(int[][] oyunAlani,int[] koordinat){
-        if(oyunAlani[koordinat[0]][koordinat[1]] > 0){
+    public static boolean AltinVarMi(int[][] oyunAlani,int[] koordinat)
+    {
+        if(oyunAlani[koordinat[0]][koordinat[1]] > 0)
+        {
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
     }
-    public static boolean gizliAltinVarMi(int[][]oyunAlani, int[] koordinat){
-        if(oyunAlani[koordinat[0]][koordinat[1]]<0){
+   
+   
+    public static boolean gizliAltinVarMi(int[][]oyunAlani, int[] koordinat)
+    {
+        if(oyunAlani[koordinat[0]][koordinat[1]]<0)
+        {
 
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
 

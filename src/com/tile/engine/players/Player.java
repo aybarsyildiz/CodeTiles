@@ -32,11 +32,16 @@ public class Player {
         this.altinSayisi += değişenAltin;
         return altinSayisi;
     }
+
     public void hedefKontrol (boolean hedefVarmı){
         this.hedefVarmı =hedefVarmı;
     }
     public boolean hedefVarm (){
         return hedefVarmı;
     }
+
+    
+
+    
     //public abstract List<Move> calculateLegalMoves(final Board board);//pyuncunun yapabileceği hamlelerin listesi
 }
