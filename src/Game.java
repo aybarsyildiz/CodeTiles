@@ -315,31 +315,7 @@ public  class Game {
     timer.schedule(bOyuncu, 0, 1000);
     timer.schedule(cOyuncu, 0, 1000);
 
-/* //OYUN LOOPU (AMA ÇALIŞMIYOR)
-    while(aOyuncusu.altinSayisi!=0){
-        //board[aKoordinatlari[0]][aKoordinatlari[1]].setText(" ");
-        int[] aOyuncusuHamlesi = A_oyuncusu.enYakinAltiniBul(oyunAlani, aKoordinatlari, oyunAlaniBoyutu);
-        //board[aOyuncusuHamlesi[0]][aOyuncusuHamlesi[1]].setBackground(Color.WHITE);
-        //board[aOyuncusuHamlesi[0]][aOyuncusuHamlesi[1]].setText("A");
-        aOyuncusu.altinSayisi -= A_oyuncusu.uzaklikBul(aKoordinatlari[0], aKoordinatlari[1], aOyuncusuHamlesi[0], aOyuncusuHamlesi[1])*5;
-        aOyuncusu.playerPosition = aOyuncusuHamlesi;
-        aKoordinatlari = aOyuncusu.playerPosition;
-        try
-        {
-            Thread.sleep(1000);
-        }
-        catch(InterruptedException ex)
-        {
-            Thread.currentThread().interrupt();
-        }
-        System.out.println("hamle"+aOyuncusuHamlesi[0]+" "+aOyuncusuHamlesi[1]);
-        System.out.println("koordinatlar"+aKoordinatlari[0]+" "+aKoordinatlari[1]);
-        gameFrame.setLocationRelativeTo(null);
-        gameFrame.setLayout(null);
-        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameFrame.setVisible(true);
-    }
-    */
+
     
     
     }

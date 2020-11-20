@@ -43,5 +43,5 @@ public class Player {
     
 
     
-    //public abstract List<Move> calculateLegalMoves(final Board board);//pyuncunun yapabileceği hamlelerin listesi
+    
 }
