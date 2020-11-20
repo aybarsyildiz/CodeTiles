@@ -194,7 +194,7 @@ public  class Game {
         @Override
         public void run(){
             if (bOyuncusu.hedefVarm() == false) {
-                bOyuncusu.altinGuncelle(-5);
+                bOyuncusu.altinGuncelle(-10);
                 bOyuncusu.hedefKontrol(true);
                 System.out.println("b oyuncusu altın:"+bOyuncusu.altinSayisi);
             }
@@ -206,7 +206,7 @@ public  class Game {
             
             bOyuncusu.koordinatlariGuncelle(kordinat);
             System.out.println("b son hamle :"+Move.sonHamle());
-            bOyuncusu.altinGuncelle(Move.sonHamle()*(-10));
+            bOyuncusu.altinGuncelle(Move.sonHamle()*(-5));
             System.out.println("+b oyuncusu altın:"+bOyuncusu.altinSayisi);
             board[kordinat[0]][kordinat[1]].setText("B");
             try{
@@ -250,7 +250,7 @@ public  class Game {
         @Override
         public void run(){
             if (cOyuncusu.hedefVarm() == false) {
-                cOyuncusu.altinGuncelle(-5);
+                cOyuncusu.altinGuncelle(-15);
                 cOyuncusu.hedefKontrol(true);
                 System.out.println("c oyuncusu altın:"+cOyuncusu.altinSayisi);
             }
@@ -262,7 +262,7 @@ public  class Game {
             
             cOyuncusu.koordinatlariGuncelle(kordinat);
             System.out.println("c son hamle :"+Move.sonHamle());
-            cOyuncusu.altinGuncelle(Move.sonHamle()*(-10));
+            cOyuncusu.altinGuncelle(Move.sonHamle()*(-5));
             System.out.println("+c oyuncusu altın:"+cOyuncusu.altinSayisi);
             board[kordinat[0]][kordinat[1]].setText("C");
             try{
