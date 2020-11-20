@@ -39,6 +39,7 @@ public  class Game {
     int[] dKoordinatlari = {row-1,col-1};
     Player aOyuncusu = new Player(aKoordinatlari,oyuncuAltını);
     Player bOyuncusu = new Player(bKoordinatlari,oyuncuAltını);
+    Player cOyuncusu = new Player(cKoordinatlari,oyuncuAltını);
     
     Btn[][] board = new Btn [row][col];
      
@@ -119,10 +120,11 @@ public  class Game {
    
      
      Timer timer = new Timer();
+     // A OYUNCU TIMERİ
      TimerTask aOyuncu = new TimerTask(){
       @Override
       public void run(){
-        int[][] hedefAlinanKareler = new int[2][3];
+        //int[][] hedefAlinanKareler = new int[2][3];
         /*
             hedef alınan kareler:
             0 0 --> A'nın hedef aldığı kare
@@ -132,6 +134,7 @@ public  class Game {
             D oyuncusu hedef belirlerken bunları kontrol eder,
             hedef aldığı kare eğer buradaki karelerle çakışıyorsa
             o kareyi hedef almaz.
+
         */
          if (aOyuncusu.hedefVarm() == false) {
             aOyuncusu.altinGuncelle(-5);
@@ -147,19 +150,33 @@ public  class Game {
          System.out.println("oyuncu konumu"+ kordinat[0]+" "+kordinat[1]);
          
          aOyuncusu.koordinatlariGuncelle(kordinat);
-         System.out.println("son hamle :"+Move.sonHamle());
+         System.out.println("a son hamle :"+Move.sonHamle());
          aOyuncusu.altinGuncelle(Move.sonHamle()*(-5));
          System.out.println("+a oyuncusu altın:"+aOyuncusu.altinSayisi);
          board[kordinat[0]][kordinat[1]].setText("A");
+         try{
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException ex){
+            Thread.currentThread().interrupt();
+        }
+        board[kordinat[0]][kordinat[1]].setText(" ");
 
         
          if(kordinat[0]==aEnYakinKoordinatlar[0] && kordinat[1]==aEnYakinKoordinatlar[1]){
               oyunAlani[kordinat[0]][kordinat[1]]=0;
-              board[kordinat[0]][kordinat[1]].setText(" ");
+              board[kordinat[0]][kordinat[1]].setText("A");
               board[kordinat[0]][kordinat[1]].setBackground(Color.WHITE);
               aOyuncusu.hedefKontrol(false);
               System.out.println("altın"+board[kordinat[0]][kordinat[1]].kordinatAltını());
               aOyuncusu.altinSayisi+=board[kordinat[0]][kordinat[1]].kordinatAltını();
+              try{
+                  Thread.sleep(1000);
+              }
+              catch(InterruptedException ex){
+                  Thread.currentThread().interrupt();
+              }
+              board[kordinat[0]][kordinat[1]].setText(" ");
         }
     
     
@@ -170,12 +187,133 @@ public  class Game {
         timer.cancel();
     }
     
-    
-    
-    
     }
+    // B OYUNCU TIMERİ
     };
+    TimerTask bOyuncu = new TimerTask(){
+        @Override
+        public void run(){
+            if (bOyuncusu.hedefVarm() == false) {
+                bOyuncusu.altinGuncelle(-10);
+                bOyuncusu.hedefKontrol(true);
+                System.out.println("b oyuncusu altın:"+bOyuncusu.altinSayisi);
+            }
+            int[] bEnHesapliKoordinatlar = B_oyuncusu.enHesapliAltiniBul(oyunAlani,bOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu);
+            System.out.println("altın konumu:" +bEnHesapliKoordinatlar[0]+" "+bEnHesapliKoordinatlar[1]);
+         
+            int[] kordinat =Move.yeniKordinat(bOyuncusu.suAnkiKoordinat(),bEnHesapliKoordinatlar);
+            System.out.println("b oyuncu konumu"+ kordinat[0]+" "+kordinat[1]);
+            
+            bOyuncusu.koordinatlariGuncelle(kordinat);
+            System.out.println("b son hamle :"+Move.sonHamle());
+            bOyuncusu.altinGuncelle(Move.sonHamle()*(-5));
+            System.out.println("+b oyuncusu altın:"+bOyuncusu.altinSayisi);
+            board[kordinat[0]][kordinat[1]].setText("B");
+            try{
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException ex){
+                Thread.currentThread().interrupt();
+            }
+            board[kordinat[0]][kordinat[1]].setText(" ");
+
+            if(kordinat[0]==bEnHesapliKoordinatlar[0] && kordinat[1]==bEnHesapliKoordinatlar[1]){
+                oyunAlani[kordinat[0]][kordinat[1]]=0;
+                board[kordinat[0]][kordinat[1]].setText("B");
+                board[kordinat[0]][kordinat[1]].setBackground(Color.WHITE);
+                bOyuncusu.hedefKontrol(false);
+                System.out.println("altın"+board[kordinat[0]][kordinat[1]].kordinatAltını());
+                bOyuncusu.altinSayisi+=board[kordinat[0]][kordinat[1]].kordinatAltını();
+                try{
+                    Thread.sleep(1000);
+                }
+                catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                board[kordinat[0]][kordinat[1]].setText(" ");
+          }
+      
+      
+      
+      
+          if(bOyuncusu.altinSayisi<=0){
+          System.out.println("B oyuncusu elendi");
+          timer.cancel();
+            }
+    
+            
+        }
+
+    };
+    //C OYUNCUSU TIMERİ
+    TimerTask cOyuncu = new TimerTask(){
+        @Override
+        public void run(){
+            if (cOyuncusu.hedefVarm() == false) {
+                cOyuncusu.altinGuncelle(-15);
+                cOyuncusu.hedefKontrol(true);
+                System.out.println("c oyuncusu altın:"+cOyuncusu.altinSayisi);
+            }
+            int[] cEnHesapliKoordinatlar = C_oyuncusu.enHesapliAltiniBul(oyunAlani,cOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu);
+            System.out.println("altın konumu:" +cEnHesapliKoordinatlar[0]+" "+cEnHesapliKoordinatlar[1]);
+         
+            int[] kordinat =Move.yeniKordinat(cOyuncusu.suAnkiKoordinat(),cEnHesapliKoordinatlar);
+            System.out.println("c oyuncu konumu"+ kordinat[0]+" "+kordinat[1]);
+            
+            cOyuncusu.koordinatlariGuncelle(kordinat);
+            System.out.println("c son hamle :"+Move.sonHamle());
+            cOyuncusu.altinGuncelle(Move.sonHamle()*(-5));
+            System.out.println("+c oyuncusu altın:"+cOyuncusu.altinSayisi);
+            board[kordinat[0]][kordinat[1]].setText("C");
+            try{
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException ex){
+                Thread.currentThread().interrupt();
+            }
+            board[kordinat[0]][kordinat[1]].setText(" ");
+
+            if(kordinat[0]==cEnHesapliKoordinatlar[0] && kordinat[1]==cEnHesapliKoordinatlar[1]){
+                oyunAlani[kordinat[0]][kordinat[1]]=0;
+                board[kordinat[0]][kordinat[1]].setText("C");
+                board[kordinat[0]][kordinat[1]].setBackground(Color.WHITE);
+                cOyuncusu.hedefKontrol(false);
+                System.out.println("altın"+board[kordinat[0]][kordinat[1]].kordinatAltını());
+                //eğer gizli altınsa + ya çevirip ekleyecek
+                if(board[kordinat[0]][kordinat[1]].kordinatAltını() < 0){
+                    cOyuncusu.altinSayisi -= board[kordinat[0]][kordinat[1]].kordinatAltını();
+                }
+                else{
+                    cOyuncusu.altinSayisi+=board[kordinat[0]][kordinat[1]].kordinatAltını();
+                }
+                try{
+                    Thread.sleep(1000);
+                }
+                catch(InterruptedException ex){
+                    Thread.currentThread().interrupt();
+                }
+                board[kordinat[0]][kordinat[1]].setText(" ");
+          }
+      
+      
+      
+      
+          if(cOyuncusu.altinSayisi<=0){
+          System.out.println("B oyuncusu elendi");
+          timer.cancel();
+            }
+    
+            
+
+
+
+
+        }
+    };
+
     timer.schedule(aOyuncu,0,1000);
+    timer.schedule(bOyuncu, 1000, 1000);
+    timer.schedule(cOyuncu, 2000, 1000);
 
 /* //OYUN LOOPU (AMA ÇALIŞMIYOR)
     while(aOyuncusu.altinSayisi!=0){

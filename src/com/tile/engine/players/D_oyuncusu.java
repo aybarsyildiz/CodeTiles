@@ -8,22 +8,31 @@ public class D_oyuncusu {
         return Math.abs(x2-x1) + Math.abs(y2-y1);
     }
 
+    private static double MaaliyetHesapla(int[][] oyunAlani,int[] altinKoordinati, double uzaklik){
+        return   (uzaklik*5)-oyunAlani[altinKoordinati[0]][altinKoordinati[1]];
+    }   
 
-    public static int[] enYakinAltiniBul(int[][] oyunAlani, int[] oyuncuKoordinatlari,int[] oyunAlaniBoyutu){
+    
+
+    public static int[] enHesapliAltiniBul(int[][] oyunAlani, int[] oyuncuKoordinatlari,int[] oyunAlaniBoyutu){
         
         int oyuncununXKoordinati = oyuncuKoordinatlari[0];
         int oyuncununYKoordinati = oyuncuKoordinatlari[1];
-        int[] enYakinAltinKoordinatlari = {50000000,50000000};
-        double uzaklik = uzaklikBul(oyuncununXKoordinati, oyuncununYKoordinati, enYakinAltinKoordinatlari[0], enYakinAltinKoordinatlari[1]);
+        int[] enHesapliAltinKoordinatlari = {oyunAlaniBoyutu[0]-1,0};
+        double uzaklik = uzaklikBul(oyuncununXKoordinati, oyuncununYKoordinati, enHesapliAltinKoordinatlari[0], enHesapliAltinKoordinatlari[1]);
+        double maaliyet = MaaliyetHesapla(oyunAlani, enHesapliAltinKoordinatlari, uzaklik);
+
         for (int i = 0; i < oyunAlaniBoyutu[0]; i++) {
             for (int j = 0; j < oyunAlaniBoyutu[1] ; j++) {
                 int[] tileKoordinati = {i,j};
 
                 if(Tile.AltinVarMi(oyunAlani,tileKoordinati)){
-                    if(uzaklikBul(oyuncununXKoordinati, oyuncununYKoordinati, i, j) < uzaklik){
-                            uzaklik = uzaklikBul(oyuncununXKoordinati, oyuncununYKoordinati, i, j);
-                            enYakinAltinKoordinatlari[0] = i;
-                            enYakinAltinKoordinatlari[1] = j;
+                    uzaklik = uzaklikBul(oyuncununXKoordinati,oyuncununYKoordinati,i,j);
+                    if(maaliyet > MaaliyetHesapla(oyunAlani, tileKoordinati, uzaklik)){
+                            maaliyet = MaaliyetHesapla(oyunAlani, tileKoordinati, uzaklik);
+                           // System.out.println(i+" "+j+". en hesapli:"+ maaliyet);
+                            enHesapliAltinKoordinatlari[0] = i;
+                            enHesapliAltinKoordinatlari[1] = j;
 
                     }
                 }
@@ -32,9 +41,8 @@ public class D_oyuncusu {
             }
             
         }
-        
 
-        return enYakinAltinKoordinatlari;
+        return enHesapliAltinKoordinatlari;
     }
 
     public static boolean hedefAlindiMi(int hedefKoordinatlar[], int oyuncularinHedefleri[][]){
