@@ -312,8 +312,8 @@ public  class Game {
     };
 
     timer.schedule(aOyuncu,0,1000);
-    timer.schedule(bOyuncu, 1000, 1000);
-    timer.schedule(cOyuncu, 2000, 1000);
+    timer.schedule(bOyuncu, 0, 1000);
+    timer.schedule(cOyuncu, 0, 1000);
 
 /* //OYUN LOOPU (AMA ÇALIŞMIYOR)
     while(aOyuncusu.altinSayisi!=0){
