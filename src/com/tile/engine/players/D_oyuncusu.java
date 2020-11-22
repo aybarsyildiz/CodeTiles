@@ -14,7 +14,7 @@ public class D_oyuncusu {
 
     
 
-    public static int[] enHesapliAltiniBul(int[][] oyunAlani, int[] oyuncuKoordinatlari,int[] oyunAlaniBoyutu){
+    public static int[] enHesapliAltiniBul(int[][] oyunAlani, int[] oyuncuKoordinatlari,int[] oyunAlaniBoyutu,int[][] altinHedefleri){
         
         int oyuncununXKoordinati = oyuncuKoordinatlari[0];
         int oyuncununYKoordinati = oyuncuKoordinatlari[1];
@@ -27,15 +27,54 @@ public class D_oyuncusu {
                 int[] tileKoordinati = {i,j};
 
                 if(Tile.AltinVarMi(oyunAlani,tileKoordinati)){
+                   
+                   
                     uzaklik = uzaklikBul(oyuncununXKoordinati,oyuncununYKoordinati,i,j);
-                    if(maaliyet > MaaliyetHesapla(oyunAlani, tileKoordinati, uzaklik)){
-                            maaliyet = MaaliyetHesapla(oyunAlani, tileKoordinati, uzaklik);
-                           // System.out.println(i+" "+j+". en hesapli:"+ maaliyet);
+                    
+                    
+                    if(i==altinHedefleri[0][0] && j==altinHedefleri[0][1]){
+                    double aUzaklık=uzaklikBul(altinHedefleri[0][0],altinHedefleri[0][1],altinHedefleri[0][2],altinHedefleri[0][3]);
+                        if(uzaklik>aUzaklık){
+                           continue;
+                        }
+
+                    }
+                    if(i==altinHedefleri[1][0] && j==altinHedefleri[1][1]){
+                        double bUzaklık=uzaklikBul(altinHedefleri[1][0],altinHedefleri[1][1],altinHedefleri[1][2],altinHedefleri[1][3]);
+                            if(uzaklik>bUzaklık){
+                               continue;
+                            }
+    
+                        }
+                        
+                    if(i==altinHedefleri[2][0] && j==altinHedefleri[2][1]){
+                            
+                        double cUzaklık=uzaklikBul(altinHedefleri[2][0],altinHedefleri[2][1],altinHedefleri[2][2],altinHedefleri[2][3]);
+                            if(uzaklik>cUzaklık){
+                                 continue;
+                            }
+        
+                     }
+                    
+                    
+                    if(maaliyet > MaaliyetHesapla(oyunAlani, tileKoordinati, uzaklik)){  
+                        
+                        maaliyet = MaaliyetHesapla(oyunAlani, tileKoordinati, uzaklik);
+                           
+
+
+
                             enHesapliAltinKoordinatlari[0] = i;
                             enHesapliAltinKoordinatlari[1] = j;
 
                     }
+               
+               
+               
+               
+               
                 }
+
 
 
             }
