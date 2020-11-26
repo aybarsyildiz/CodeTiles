@@ -3,7 +3,7 @@ package com.tile.engine.board;
 public class Move 
 { 
  private static int sonHamleSayısı=0;
-
+ 
  public static int[] yeniKordinat(int[] oyuncu ,int[] altın,int move)
  { 
    int oX=oyuncu[0],oY=oyuncu[1],aX=altın[0],aY=altın[1];

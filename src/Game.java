@@ -17,11 +17,15 @@ import java.util.Timer;
 
 import com.tile.engine.board.Move;
 
+
+
+
+
 public  class Game {
     
     private int altınSayısı;
     private int gizliAltınSayısı;
-
+    
     public Game(int[][] oyunAlani){
       
       
@@ -170,7 +174,10 @@ public  class Game {
      }
    
      int [][] altınHedefleri = new int[3][4];
+     int [][] gizliKontrol = new int[4][4];
      
+     
+
      Timer timer = new Timer();
      Timer timerb = new Timer();
      Timer timerc = new Timer();
@@ -215,13 +222,20 @@ public  class Game {
          System.out.println("altın konumu:" +hedef[0]+" "+hedef[1]);
          altınHedefleri[0][0] = hedef[0];
          altınHedefleri[0][1] = hedef[1];
-        
+         
+         
+         
          int[] kordinat =Move.yeniKordinat(aOyuncusu.suAnkiKoordinat(),aOyuncusu.getHedef(),move);
          System.out.println("oyuncu konumu"+ kordinat[0]+" "+kordinat[1]);
+         
          altınHedefleri[0][2] = kordinat[0];
          altınHedefleri[0][3] = kordinat[1];
-        
          aOyuncusu.koordinatlariGuncelle(kordinat);
+         board[kordinat[0]][kordinat[1]].setText("A");
+         
+
+
+
          System.out.println("a son hamle :"+Move.sonHamle());
          aOyuncusu.altinGuncelle(Move.sonHamle()*(-aMove));
          System.out.println("a oyuncusu altın:"+aOyuncusu.altinSayisi);
@@ -550,7 +564,7 @@ TimerTask dOyuncu = new TimerTask(){
     timerd.schedule(dOyuncu, 3000, 4000);
     
     }
-
+ 
    
 
 
