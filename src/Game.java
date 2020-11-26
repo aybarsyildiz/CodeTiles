@@ -366,7 +366,15 @@ public  class Game {
                   }
            
            else{ 
-           
+            if(aOyuncusu.hedefVarm() == true){
+             
+                int[] hedef =cOyuncusu.getHedef();
+                if(oyunAlani[hedef[0]][hedef[1]]==0){
+                    System.out.println("C yeni hedef belirledi");
+                    aOyuncusu.hedefKontrol(false);
+                 }
+    
+            }
            
            
             if (cOyuncusu.hedefVarm() == false) {
@@ -374,14 +382,17 @@ public  class Game {
                 cOyuncusu.altinGuncelle(-cTarget);
                 cOyuncusu.hedefKontrol(true);
                 System.out.println("c oyuncusu altın:"+cOyuncusu.altinSayisi);
+                int[] bEnHesapliKoordinatlar = C_oyuncusu.enHesapliAltiniBul(oyunAlani,cOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu);
+                cOyuncusu.setHedef(bEnHesapliKoordinatlar);
             }
-            int[] cEnHesapliKoordinatlar = C_oyuncusu.enHesapliAltiniBul(oyunAlani,cOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu);
-            System.out.println("altın konumu:" +cEnHesapliKoordinatlar[0]+" "+cEnHesapliKoordinatlar[1]);
-            altınHedefleri[2][0] = cEnHesapliKoordinatlar[0];
-            altınHedefleri[2][1] = cEnHesapliKoordinatlar[1];
+            
+            int[] hedef = bOyuncusu.getHedef();
+            System.out.println("altın konumu:" +hedef[0]+" "+hedef[1]);
+            altınHedefleri[2][0] = hedef[0];
+            altınHedefleri[2][1] = hedef[1];
 
 
-            int[] kordinat =Move.yeniKordinat(cOyuncusu.suAnkiKoordinat(),cEnHesapliKoordinatlar,move);
+            int[] kordinat =Move.yeniKordinat(cOyuncusu.suAnkiKoordinat(),bOyuncusu.getHedef(),move);
             System.out.println("c oyuncu konumu"+ kordinat[0]+" "+kordinat[1]);
             
             altınHedefleri[2][2] = kordinat[0];
@@ -400,8 +411,9 @@ public  class Game {
             }*/
             board[kordinat[0]][kordinat[1]].setText(" ");
 
-            if(kordinat[0]==cEnHesapliKoordinatlar[0] && kordinat[1]==cEnHesapliKoordinatlar[1]){
+            if(kordinat[0]==hedef[0] && kordinat[1]==hedef[1]){
                 oyunAlani[kordinat[0]][kordinat[1]]=0;
+                System.out.println("c altın (altın aldı)"+cOyuncusu.altinSayisi);
                 altınSayısı=altınSayısı-1;
                 board[kordinat[0]][kordinat[1]].setText("C");
                 board[kordinat[0]][kordinat[1]].setBackground(Color.WHITE);
@@ -457,18 +469,31 @@ TimerTask dOyuncu = new TimerTask(){
        
        else{
         
+        if(dOyuncusu.hedefVarm() == true){
+            int[] hedef =dOyuncusu.getHedef();
+            if(oyunAlani[hedef[0]][hedef[1]]==0){
+               System.out.println("D yeni hedef belirledi");
+               dOyuncusu.hedefKontrol(false);
+            }
+
+       }
+
+        
         
         if (dOyuncusu.hedefVarm() == false) {
             System.out.println("d oyuncusu altın:"+dOyuncusu.altinSayisi);
             dOyuncusu.altinGuncelle(-dTarget);
             dOyuncusu.hedefKontrol(true);
             System.out.println("d oyuncusu altın:"+dOyuncusu.altinSayisi);
+            int[] dEnHesapliKoordinatlar = D_oyuncusu.enHesapliAltiniBul(oyunAlani,dOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu,altınHedefleri);
+            bOyuncusu.setHedef(dEnHesapliKoordinatlar);
         }
-        int[] dEnHesapliKoordinatlar = D_oyuncusu.enHesapliAltiniBul(oyunAlani,dOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu,altınHedefleri);
-        System.out.println("altın konumu:" +dEnHesapliKoordinatlar[0]+" "+dEnHesapliKoordinatlar[1]);
+        
+        int[] hedef = dOyuncusu.getHedef();
+        System.out.println("altın konumu:" +hedef[0]+" "+hedef[1]);
         
 
-        int[] kordinat =Move.yeniKordinat(dOyuncusu.suAnkiKoordinat(),dEnHesapliKoordinatlar,move);
+        int[] kordinat =Move.yeniKordinat(dOyuncusu.suAnkiKoordinat(), dOyuncusu.getHedef(),move);
         System.out.println("d oyuncu konumu"+ kordinat[0]+" "+kordinat[1]);
        
         
@@ -486,8 +511,9 @@ TimerTask dOyuncu = new TimerTask(){
         }*/
         board[kordinat[0]][kordinat[1]].setText(" ");
 
-        if(kordinat[0]==dEnHesapliKoordinatlar[0] && kordinat[1]==dEnHesapliKoordinatlar[1]){
+        if(kordinat[0]==hedef[0] && kordinat[1]==hedef[1]){
             oyunAlani[kordinat[0]][kordinat[1]]=0;
+            System.out.println("d altın (altın aldı)"+dOyuncusu.altinSayisi);
             altınSayısı=altınSayısı-1;
             board[kordinat[0]][kordinat[1]].setText("D");
             board[kordinat[0]][kordinat[1]].setBackground(Color.WHITE);
@@ -502,9 +528,9 @@ TimerTask dOyuncu = new TimerTask(){
                 Thread.currentThread().interrupt();
             }*/
             board[kordinat[0]][kordinat[1]].setText(" ");
-      }
+        }
       
-          }
+     }
       
 
         
