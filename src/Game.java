@@ -180,6 +180,7 @@ public  class Game {
      TimerTask aOyuncu = new TimerTask(){
       @Override
       public void run(){
+        System.out.println("\n");
         if(altınSayısı==0 && gizliAltınSayısı==0){
             System.out.println("Altınlar bitti");
             timer.cancel();
@@ -266,6 +267,7 @@ public  class Game {
     TimerTask bOyuncu = new TimerTask(){
         @Override
         public void run(){
+            System.out.println("\n");
             if(altınSayısı==0 && gizliAltınSayısı==0){
                 System.out.println("Altınlar bitti");
                 timerb.cancel();
@@ -355,6 +357,8 @@ public  class Game {
     TimerTask cOyuncu = new TimerTask(){
         @Override
         public void run(){
+            
+            System.out.println("\n");
             if(altınSayısı==0 && gizliAltınSayısı==0){
                 System.out.println("Altınlar bitti");
                 timerc.cancel();
@@ -366,12 +370,12 @@ public  class Game {
                   }
            
            else{ 
-            if(aOyuncusu.hedefVarm() == true){
+            if(cOyuncusu.hedefVarm() == true){
              
                 int[] hedef =cOyuncusu.getHedef();
                 if(oyunAlani[hedef[0]][hedef[1]]==0){
                     System.out.println("C yeni hedef belirledi");
-                    aOyuncusu.hedefKontrol(false);
+                    cOyuncusu.hedefKontrol(false);
                  }
     
             }
@@ -382,17 +386,17 @@ public  class Game {
                 cOyuncusu.altinGuncelle(-cTarget);
                 cOyuncusu.hedefKontrol(true);
                 System.out.println("c oyuncusu altın:"+cOyuncusu.altinSayisi);
-                int[] bEnHesapliKoordinatlar = C_oyuncusu.enHesapliAltiniBul(oyunAlani,cOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu);
-                cOyuncusu.setHedef(bEnHesapliKoordinatlar);
+                int[] cEnHesapliKoordinatlar = C_oyuncusu.enHesapliAltiniBul(oyunAlani,cOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu);
+                cOyuncusu.setHedef(cEnHesapliKoordinatlar);
             }
             
-            int[] hedef = bOyuncusu.getHedef();
+            int[] hedef = cOyuncusu.getHedef();
             System.out.println("altın konumu:" +hedef[0]+" "+hedef[1]);
             altınHedefleri[2][0] = hedef[0];
             altınHedefleri[2][1] = hedef[1];
 
 
-            int[] kordinat =Move.yeniKordinat(cOyuncusu.suAnkiKoordinat(),bOyuncusu.getHedef(),move);
+            int[] kordinat =Move.yeniKordinat(cOyuncusu.suAnkiKoordinat(),cOyuncusu.getHedef(),move);
             System.out.println("c oyuncu konumu"+ kordinat[0]+" "+kordinat[1]);
             
             altınHedefleri[2][2] = kordinat[0];
@@ -457,6 +461,7 @@ public  class Game {
 TimerTask dOyuncu = new TimerTask(){
     @Override
     public void run(){
+        System.out.println("\n");
         if(altınSayısı==0 && gizliAltınSayısı==0){
             System.out.println("Altınlar bitti");
             timerd.cancel();
@@ -486,7 +491,7 @@ TimerTask dOyuncu = new TimerTask(){
             dOyuncusu.hedefKontrol(true);
             System.out.println("d oyuncusu altın:"+dOyuncusu.altinSayisi);
             int[] dEnHesapliKoordinatlar = D_oyuncusu.enHesapliAltiniBul(oyunAlani,dOyuncusu.suAnkiKoordinat(),oyunAlaniBoyutu,altınHedefleri);
-            bOyuncusu.setHedef(dEnHesapliKoordinatlar);
+            dOyuncusu.setHedef(dEnHesapliKoordinatlar);
         }
         
         int[] hedef = dOyuncusu.getHedef();
