@@ -17,7 +17,11 @@ public class Login implements ActionListener{
    bMoveText,bTargetText,cMoveText,cTargetText,dMoveText,dTargetText;
    JButton btn;
    
-   private static int row=20,col=20,altınOranı=20,gAltınOranı=10,oyuncuAltını=200;
+   private static int row=20,col=20,altınOranı=20,gAltınOranı=10,oyuncuAltını=200,move=3;
+   private static int aTarget=5,aMove=5;
+   private static int bTarget=10,bMove=5;
+   private static int cTarget=15,cMove=5;
+   private static int dTarget=20,dMove=5;
    
    public Login() {
 
@@ -137,7 +141,6 @@ public class Login implements ActionListener{
     loginFrame.add(sGoldRateText);
     loginFrame.add(pGoldText);
     loginFrame.add(moveText);
-    loginFrame.add(moveText);
     loginFrame.add(aMoveText);
     loginFrame.add(aTargetText);
     loginFrame.add(bMoveText);
@@ -169,28 +172,12 @@ public class Login implements ActionListener{
     loginFrame.add(dMoveLabel);
     loginFrame.add(dTargetLabel);
     
-
-    
-    
-    
-    
-    
-    
-    
-    
     
     loginFrame.add(btn);
-  
-
     loginFrame.setLocationRelativeTo(null);
     loginFrame.setLayout(null);
     loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     
-   
-
-
-
-
 }
 
 @Override
@@ -204,21 +191,39 @@ public  void actionPerformed(ActionEvent e) {
       this.altınOranı= Integer.parseInt(gRateText.getText());//Play'e basınca altın oranını alıyor
       this.gAltınOranı= Integer.parseInt(sGoldRateText.getText());// Play'e basınca gizli altın oranını alıyor
       this.oyuncuAltını= Integer.parseInt(pGoldText.getText());// Play'e basınca oyuncu altınını alıyor
-
+      this.move = Integer.parseInt(moveText.getText());//Play'e basınca oyuncu hareketini alıyor
+      this.aTarget = Integer.parseInt(aTargetText.getText());
+      this.bTarget = Integer.parseInt(bTargetText.getText());
+      this.cTarget = Integer.parseInt(cTargetText.getText());
+      this.dTarget = Integer.parseInt(dTargetText.getText());
+      this.aMove = Integer.parseInt(aMoveText.getText());
+      this.bMove = Integer.parseInt(bMoveText.getText());
+      this.cMove = Integer.parseInt(cMoveText.getText());
+      this.dMove = Integer.parseInt(dMoveText.getText());
 
     } catch (Exception exception) {
-      System.out.println("Varsayılan boyut 20x20 ayarlandı.");
+      System.out.println("Varsayılan ayarlandı.");
       this.row = 20;
       this.col = 20;
       this.altınOranı=20;
       this.gAltınOranı=10;
       this.oyuncuAltını=200;
+      this.move=3;
+      this.aTarget =5; 
+      this.bTarget =10;
+      this.cTarget =15;
+      this.dTarget =20;
+      this.aMove = 5;
+      this.bMove = 5;
+      this.cMove = 5;
+      this.dMove = 5;
     }
    
    System.out.println(row);
    System.out.println(col);
    System.out.println(altınOranı);
    System.out.println(gAltınOranı);
+   System.out.println(move);
    int[][] oyunAlani = Tile.createAllPossibleTiles(row,col,altınOranı,gAltınOranı);
    Game x =new Game(oyunAlani);
    loginFrame.setVisible(false);
@@ -226,14 +231,51 @@ public  void actionPerformed(ActionEvent e) {
   }
   
 }
+
 public int getRow(){
-  return this.row;//Satırı game classına taşımak için
+  return this.row;
 }
 public int getCol(){
-  return this.col;//Sütunu game classına taşımak için
+  return this.col;
+}
+public int getAltınOranı(){
+  return this.altınOranı;
+}
+public int getGizliAltınOranı(){
+  return this.gAltınOranı;
 }
 public int getOyuncuAltını(){
-  return this.oyuncuAltını;//Satırı game classına taşımak için
+  return this.oyuncuAltını;
 }
+public int getMove(){
+  return this.move;
+}
+public int getTargetA(){
+  return this.aTarget;
+}
+public int getTargetB(){
+  return this.bTarget;
+}
+public int getTargetC(){
+  return this.cTarget;
+}
+public int getTargetD(){
+  return this.dTarget;
+}
+public int getMoveA(){
+  return this.aMove;
+}
+public int getMoveB(){
+  return this.bMove;
+}
+public int getMoveC(){
+  return this.cMove;
+}
+public int getMoveD(){
+  return this.dMove;
+}
+
+
+
 
 }

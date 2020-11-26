@@ -10,6 +10,7 @@ public class Player {
     public int[] playerPosition = new int[2];
     public int altinSayisi;
     public boolean hedefVarmı=false;
+    private int[] hedef = new int [2];
 
     public Player( int[] playerPosition,int altinSayisi){
 
@@ -39,8 +40,13 @@ public class Player {
     public boolean hedefVarm (){
         return hedefVarmı;
     }
-
     
+    public int[] getHedef (){
+        return this.hedef;
+    }
+    public int[] setHedef (int hedef[]){
+        return this.hedef=hedef;
+    }
 
     
     //public abstract List<Move> calculateLegalMoves(final Board board);//pyuncunun yapabileceği hamlelerin listesi
